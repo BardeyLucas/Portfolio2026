@@ -5,6 +5,13 @@
   --font-outfit: "Outfit", sans-serif;
   --font-opensans: "Open Sans", sans-serif;
 
+  --color-Darker: #0D0D0D;
+  --color-Dark: #161616;
+  --color-Medium: #222222;
+  --color-Light: #444444;
+  --color-White: #FAFAFA;
+  --color-Primary: #FAFAFACD;
+
   --grid-template-columns-Principal: repeat(12, 1fr);
   --grid-template-columns-P12: repeat(12, 1fr);
   --grid-template-columns-P11: repeat(11, 1fr);
@@ -32,10 +39,12 @@
   --grid-template-columns-Max3: repeat(3, 106px);
   --grid-template-columns-Max2: repeat(2, 106px);
   --grid-template-columns-Max1: repeat(1, 106px);
+
+  --breakpoint-3xl: 120rem;
 }
 
 @layer components {
     .grille {
-      @apply grid grid-cols-Principal justify-center lg:gap-x-12 gap-x-5 lg:px-12 px-5;
+      @apply grid grid-cols-Principal 3xl:grid-cols-MaxPrincipal justify-center lg:gap-x-12 gap-x-5 lg:px-12 px-5;
     }
 }
