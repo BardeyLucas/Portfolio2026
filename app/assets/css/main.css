@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-outfit: "Outfit", sans-serif;
+  --font-opensans: "Open Sans", sans-serif;
+
+  --grid-template-columns-Principal: repeat(12, 1fr);
+  --grid-template-columns-P12: repeat(12, 1fr);
+  --grid-template-columns-P11: repeat(11, 1fr);
+  --grid-template-columns-P10: repeat(10, 1fr);
+  --grid-template-columns-P9: repeat(9, 1fr);
+  --grid-template-columns-P8: repeat(8, 1fr);
+  --grid-template-columns-P7: repeat(7, 1fr);
+  --grid-template-columns-P6: repeat(6, 1fr);
+  --grid-template-columns-P5: repeat(5, 1fr);
+  --grid-template-columns-P4: repeat(4, 1fr);
+  --grid-template-columns-P3: repeat(3, 1fr);
+  --grid-template-columns-P2: repeat(2, 1fr);
+  --grid-template-columns-P1: repeat(1, 1fr);
+  
+  --grid-template-columns-MaxPrincipal: repeat(12, 106px);
+  --grid-template-columns-Max12: repeat(12, 106px);
+  --grid-template-columns-Max11: repeat(11, 106px);
+  --grid-template-columns-Max10: repeat(10, 106px);
+  --grid-template-columns-Max9: repeat(9, 106px);
+  --grid-template-columns-Max8: repeat(8, 106px);
+  --grid-template-columns-Max7: repeat(7, 106px);
+  --grid-template-columns-Max6: repeat(6, 106px);
+  --grid-template-columns-Max5: repeat(5, 106px);
+  --grid-template-columns-Max4: repeat(4, 106px);
+  --grid-template-columns-Max3: repeat(3, 106px);
+  --grid-template-columns-Max2: repeat(2, 106px);
+  --grid-template-columns-Max1: repeat(1, 106px);
+}
+
+@layer components {
+    .grille {
+      @apply grid grid-cols-Principal justify-center lg:gap-x-12 gap-x-5 lg:px-12 px-5;
+    }
+}
