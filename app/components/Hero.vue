@@ -30,7 +30,7 @@ const getProjectStyle = (id, isBorder) => {
             @mouseenter="hoveredProject = 1"
         >
             <div class="w-full h-[800px] transform -skew-x-[20deg]">
-                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto] block">
+                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto_800px] block">
                     <div class="pt-[50px] flex flex-col justify-between h-[calc(100%-100px)] ml-[72vw]">
                         <h2 class="text-white font-bold m-0 py-2 px-5 text-5xl w-fit z-10 bg-[#000000A0] rounded-lg ">Project 1</h2>
                         <button class="text-white font-bold m-0 py-3 px-5 text-5xl z-10 mt-[50px] h-fit w-fit bg-[#000000A0] border-3 border-white rounded-2xl ml-[36vw]">Voir plus</button>
@@ -44,7 +44,7 @@ const getProjectStyle = (id, isBorder) => {
             @mouseenter="hoveredProject = 2"
         >            
             <div class="w-full h-[800px] transform -skew-x-[20deg]">
-                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto] block">
+                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto_800px] block">
                     <div class="pt-[50px] flex flex-col justify-between h-[calc(100%-100px)] ml-[51vw]">
                         <h2 class="text-white font-bold m-0 py-2 px-5 text-5xl w-fit z-10 bg-[#000000A0] rounded-lg">Project 2</h2>
                         <button class="text-white font-bold m-0 py-3 px-5 text-5xl z-10 mt-[50px] h-fit w-fit bg-[#000000A0] border-3 border-white rounded-2xl ml-[46vw]">Voir plus</button>
@@ -58,7 +58,7 @@ const getProjectStyle = (id, isBorder) => {
             @mouseenter="hoveredProject = 3"
         >
             <div class="w-full h-[800px] transform -skew-x-[20deg]">
-                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto] block">
+                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto_800px] block">
                     <div class="pt-[50px] flex flex-col justify-between h-[calc(100%-100px)] ml-[51vw]">
                         <h2 class="text-white font-bold m-0 py-2 px-5 text-5xl w-fit z-10 bg-[#000000A0] rounded-lg">Project 3</h2>
                         <button class="text-white font-bold m-0 py-3 px-5 text-5xl z-10 mt-[50px] h-fit w-fit bg-[#000000A0] border-3 border-white rounded-2xl ml-[46vw]">Voir plus</button>
@@ -72,7 +72,7 @@ const getProjectStyle = (id, isBorder) => {
             @mouseenter="hoveredProject = 4"
         >
             <div class="w-full h-[800px] transform -skew-x-[20deg]">
-                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto] block">
+                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto_800px] block">
                     <div class="pt-[50px] flex flex-col justify-between h-[calc(100%-100px)] ml-[51vw]">
                         <h2 class="text-white font-bold m-0 py-2 px-5 text-5xl w-fit z-10 bg-[#000000A0] rounded-lg">Project 4WDGBGGFHNGFBGH?DBGN</h2>
                         <button class="text-white font-bold m-0 py-3 px-5 text-5xl z-10 mt-[50px] h-fit w-fit bg-[#000000A0] border-3 border-white rounded-2xl ml-[46vw]">Voir plus</button>
@@ -86,7 +86,7 @@ const getProjectStyle = (id, isBorder) => {
             @mouseenter="hoveredProject = 5"
         >            
             <div class="w-full h-[800px] transform -skew-x-[20deg]">
-                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto] block">
+                <div class="w-[300%] -ml-[100%] h-[800px] bg-cover bg-center bg-size-[auto_800px] block">
                     <div class="pt-[50px] flex flex-col justify-between h-[calc(100%-100px)] ml-[57vw]">
                         <h2 class="text-white font-bold m-0 py-2 px-5 text-5xl w-fit z-10 bg-[#000000A0] rounded-lg">Project 5</h2>
                         <button class="text-white font-bold m-0 py-3 px-5 text-5xl z-10 mt-[50px] h-fit w-fit bg-[#000000A0] border-3 border-white rounded-2xl ml-[34vw]">Voir plus</button>

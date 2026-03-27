@@ -1,8 +1,27 @@
 <template>
-    <div>
-        <HeroTest />
-        <h1 class="font-outfit text-4xl font-bold text-center mt-10">
-        Test
-        </h1>
-    </div>
+    <main class="overflow-hidden ">
+        <Hero />
+        <section>
+            <h2 class="text-center">Projets</h2>
+            <article class="grille">
+                <CardProjet />
+                <CardProjet />
+                <CardProjet />
+                <CardProjet />
+                <CardProjet />
+                <CardProjet />
+            </article>
+        </section>
+        <section>
+            <h2 class="text-center">Books</h2>
+            <article class="grille">
+                <CardBook />
+                <CardBook />
+                <CardBook />
+                <CardBook />
+                <CardBook />
+                <CardBook />
+            </article>
+        </section>
+    </main>
 </template>
