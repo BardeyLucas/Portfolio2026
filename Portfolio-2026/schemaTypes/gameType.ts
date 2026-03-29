@@ -46,5 +46,46 @@ export const gameType = defineType({
       ],
       validation: (rule) => rule.required(),
     },
+    {
+      name: 'etiquettes',
+      title: 'Etiquettes',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'etiquette',
+          title: 'Etiquette',
+          fields: [
+            {
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'affichage',
+              title: 'Affichage',
+              type: 'boolean',
+              initialValue: false,
+              validation: (rule) => rule.required(),
+            },
+          ],
+          preview: {
+            select: {
+              title: 'label',
+              affichage: 'affichage',
+            },
+            prepare({ title, affichage }: { title?: string; affichage?: boolean }) {
+              return {
+                title: title ?? 'Sans label',
+                subtitle: affichage ? 'Affiché (Vert)' : 'Masqué (Rouge)',
+                media: () => affichage ? '🟢' : '🔴',
+              }
+            },
+          },
+        },
+      ],
+      initialValue: [{ label: 'Placeholder Label', affichage: false }],
+    },
   ],
 })
