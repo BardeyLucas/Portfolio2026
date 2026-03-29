@@ -1,28 +1,50 @@
 <script setup lang="ts">
 import { useSanityClient } from '~/composables/sanity'
 import { useRoute } from 'vue-router'
+const { urlFor } = useSanityImage()
+
 const route = useRoute()
 
-
 const client = useSanityClient()
-import type { Game } from '@/types/api/game'
-const game = ref<Game | null>(null)
-
 
 const gamesQuery = groq`
   *[_type == "game" && _id == $id][0]{
     _id,
-    title
+    priority,
+    hero,
+    title,
+    "cover": cover[]{
+      _type,
+      asset->{_id, url},
+      alt
+    },
   }
 `
-onMounted(async () => {
-  game.value = await client.fetch(gamesQuery, { id: route.params.slug })
-})
+
+const { data: game } = useAsyncData('game', () => client.fetch(gamesQuery, { id: route.params.slug }))
+
+const getCoverUrl = (cover?: Array<{ _type: string; asset: { _id: string; url: string }; alt?: string }>) => {
+  const firstCover = cover?.[0]
+  return firstCover ? (urlFor(firstCover)?.url() ?? '') : ''
+}
 
 console.log("slug: ", route.params.slug)
 </script>
 <template>
-  <div class="w-screen h-screen flex items-center justify-center">
-    <h1>{{ game?.title }}</h1>
+  <div class="w-full h-screen flex items-center justify-center contents">
+    <img
+      class="absolute top-0 left-0 w-full h-full object-cover object-center m-0"
+      :alt="game?.cover?.[0]?.alt || game?.title || 'Image du jeu'"
+      :src="getCoverUrl(game?.cover)"
+    />
+    <div class="absolute bottom-0 left-0 w-full h-40 flex flex-col gap-4 items-start justify-center px-12 bg-gradient-to-t from-[var(--color-Darker)] via-[#0D0D0D66] via-80% to-transparent font-outfit">
+      <h1 class="text-6xl">{{ game?.title }}</h1>
+      <div class="flex gap-2.5 text-xl">
+        <p class="bg-[#008800] text-[var(--color-White)] px-4 py-1 rounded-full">Test</p>
+        <p class="bg-[#008800] text-[var(--color-White)] px-4 py-1 rounded-full">Test</p>
+        <p class="bg-[#008800] text-[var(--color-White)] px-4 py-1 rounded-full">Test</p>
+        <p class="bg-[#008800] text-[var(--color-White)] px-4 py-1 rounded-full">Test</p>
+        <p class="bg-[#008800] text-[var(--color-White)] px-4 py-1 rounded-full">Test</p>      </div>
+    </div>
   </div>
 </template>
