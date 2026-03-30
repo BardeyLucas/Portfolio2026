@@ -1,49 +1,53 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+// import { onMounted, onUnmounted } from 'vue'
 
-// Variable globale pour stocker l'observateur de redimensionnement
-let resizeObserver;
+// // Variable globale pour stocker l'observateur de redimensionnement
+// let resizeObserver;
 
-// Fonction qui met à jour une variable CSS personnalisée (--section-h)
-// pour chaque élément ayant la classe .stack-section
-const updateHeights = () => {
-    // Sélectionne toutes les sections concernées dans le DOM
-    const sections = document.querySelectorAll('.stack-section');
+// // Fonction qui met à jour une variable CSS personnalisée (--section-h)
+// // pour chaque élément ayant la classe .stack-section
+// const updateHeights = () => {
+//     // Sélectionne toutes les sections concernées dans le DOM
+//     const sections = document.querySelectorAll('.stack-section');
 
-    sections.forEach(section => {
-        // Définit une variable CSS contenant la hauteur actuelle de la section
-        // offsetHeight = hauteur visible (inclut padding + border)
-        section.style.setProperty('--section-h', `${section.offsetHeight}px`);
-    });
-};
+//     sections.forEach(section => {
+//         // Définit une variable CSS contenant la hauteur actuelle de la section
+//         // offsetHeight = hauteur visible (inclut padding + border)
+//         section.style.setProperty('--section-h', `${section.offsetHeight}px`);
+//     });
+// };
 
-// Hook appelé lorsque le composant est monté dans le DOM
-onMounted(() => {
-    // Première mise à jour immédiate des hauteurs
-    updateHeights();
+// // Hook appelé lorsque le composant est monté dans le DOM
+// onMounted(() => {
+//     // Première mise à jour immédiate des hauteurs
+//     updateHeights();
 
-    // Création d’un ResizeObserver :
-    // il détecte les changements de taille des éléments observés
-    resizeObserver = new ResizeObserver(() => {
-        // À chaque changement de taille → recalcul des hauteurs
-        updateHeights();
-    });
+//     // Création d’un ResizeObserver :
+//     // il détecte les changements de taille des éléments observés
+//     resizeObserver = new ResizeObserver(() => {
+//         // À chaque changement de taille → recalcul des hauteurs
+//         updateHeights();
+//     });
     
-    // On attache l’observateur à chaque section ciblée
-    document.querySelectorAll('.stack-section').forEach(s => {
-        resizeObserver.observe(s);
-    });
-});
+//     // On attache l’observateur à chaque section ciblée
+//     document.querySelectorAll('.stack-section').forEach(s => {
+//         resizeObserver.observe(s);
+//     });
+// });
 
-// Hook appelé lorsque le composant est démonté
-onUnmounted(() => {
-    // Nettoyage : on arrête l’observation pour éviter les fuites mémoire
-    if (resizeObserver) resizeObserver.disconnect();
-});
+// // Hook appelé lorsque le composant est démonté
+// onUnmounted(() => {
+//     // Nettoyage : on arrête l’observation pour éviter les fuites mémoire
+//     if (resizeObserver) resizeObserver.disconnect();
+// });
+
+import { useSectionScript } from '~/composables/sectionScript'
+
+useSectionScript()
 </script>
 
 <template>
-    <main class="stack-root">
+    <main>
         <section class="stack-section" style="--z: 1">
             <article class="stack-panel" style="background-image: linear-gradient(180deg, #101010 0%, #2a2a2a 100%)">
                 <h1>Section 1</h1>
@@ -182,17 +186,5 @@ onUnmounted(() => {
 <style scoped>
 .stack-root {
     background: #0d0d0d;
-}
-
-.stack-section {
-    position: sticky;
-    /* On bloque la section soit en haut (0px) si elle est petite, 
-       soit quand son bas touche le bas de l'écran si elle est plus grande que la vue */
-    top: min(0px, calc(100vh - var(--section-h, 100vh)));
-    z-index: var(--z);
-}
-
-.stack-panel {
-    min-height: 100vh;
 }
 </style>

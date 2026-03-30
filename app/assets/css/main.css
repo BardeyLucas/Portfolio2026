@@ -24,7 +24,7 @@
   --grid-template-columns-P3: repeat(3, 1fr);
   --grid-template-columns-P2: repeat(2, 1fr);
   --grid-template-columns-P1: repeat(1, 1fr);
-  
+
   --grid-template-columns-MaxPrincipal: repeat(12, 106px);
   --grid-template-columns-Max12: repeat(12, 106px);
   --grid-template-columns-Max11: repeat(11, 106px);
@@ -43,7 +43,20 @@
 }
 
 @layer components {
-    .grille {
-      @apply grid grid-cols-Principal 3xl:grid-cols-MaxPrincipal justify-center lg:gap-x-12 gap-x-5 lg:px-12 px-5;
-    }
+  .grille {
+    @apply grid grid-cols-Principal 3xl:grid-cols-MaxPrincipal justify-center lg:gap-x-12 gap-x-5 lg:px-12 px-5;
+  }
+}
+
+/*Gestion des sections*/
+.stack-section {
+  position: sticky;
+  /* On bloque la section soit en haut (0px) si elle est petite, 
+       soit quand son bas touche le bas de l'écran si elle est plus grande que la vue */
+  top: min(0px, calc(100vh - var(--section-h, 100vh)));
+  z-index: var(--z);
+}
+
+.stack-panel {
+  min-height: 100vh;
 }
