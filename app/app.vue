@@ -1,6 +1,6 @@
 <template>
   <HeaderComponents />
-    <NuxtPage />
+    <NuxtPage class="font-[var(Open-Sans)]"/>
   <FooterComponents />
 </template>
 <style>
