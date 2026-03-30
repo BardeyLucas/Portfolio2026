@@ -1,8 +1,9 @@
+<script setup lang="ts">
+import bgGameDesign from '~/assets/images/KinadoIsland_Ss_Door.png'
+</script>
+
 <template>
-    <section class="bg-[url('~/assets/images/KinadoIsland_Ss_Door.png')] bg-cover bg-center stack-section" style="--z: 4">
-        <article class="stack-panel bg-[#222222E6]">
-        </article>
-    </section>
+    <SectionsOneTitle :src="bgGameDesign" title="Game Design" />
     <section class="bg-[var(--color-Dark)] stack-section" style="--z: 5">
         <article class="stack-panel">
         </article>

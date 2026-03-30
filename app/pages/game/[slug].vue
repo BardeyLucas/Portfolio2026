@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { useSanityClient } from '~/composables/sanity'
 import { useRoute } from 'vue-router'
-import GameIconeInfo from '~/assets/images/GameIconeInfo.vue'
-import GameIconeLanguage from '~/assets/images/GameIconeLanguage.vue'
-import GameIconeManette from '~/assets/images/GameIconeManette.vue'
-import GameIconePlayer from '~/assets/images/GameIconePlayer.vue'
 const { urlFor } = useSanityImage()
 
 const route = useRoute()
@@ -88,23 +84,23 @@ const GameContentComponent = computed(() => {
         </section>
         <section class="col-start-8 col-span-4 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-2.5">
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <GameIconePlayer class="w-10 h-10"/>
+            <IconesGamePlayer class="w-10 h-10"/>
             <p class="font-outfit text-2xl">Solo</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <GameIconeLanguage class="w-10 h-10"/>
+            <IconesGameLanguage class="w-10 h-10"/>
             <p class="font-outfit text-2xl">Français</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <GameIconeManette class="w-10 h-10"/>
+            <IconesGameManette class="w-10 h-10"/>
             <p class="font-outfit text-2xl">Action platformer/ Collectathon</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <GameIconeInfo class="w-10 h-10"/>
+            <IconesGameInfo class="w-10 h-10"/>
             <p class="font-outfit text-2xl">Date de sortie de<br/>la dernière mise à jour : 00/00/00</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <GameIconeInfo class="w-10 h-10"/>
+            <IconesGameInfo class="w-10 h-10"/>
             <p class="font-outfit text-2xl">Date de sortie de<br/>la version Beta : Bientôt annoncée</p>
           </div>
         </section>

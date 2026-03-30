@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import IconsWindows from '~/assets/images/icons-windows.vue';
-
 </script>
 
 <template>
@@ -10,7 +8,7 @@ import IconsWindows from '~/assets/images/icons-windows.vue';
         </div>
         <div class="flex items-start justify-end gap-5 h-16">
             <p class="text-xl">V 1.0.0</p>
-            <IconsWindows/>
+            <IconesWindows/>
         </div>
         <button class="absolute border-2 border-[var(--color-Light)] bg-[#2B7A00] text-[var(--color-White)] px-2.5 py-1 text-2xl rounded right-0 bottom-[-25%] mr-5">
             Télécharger
