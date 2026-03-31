@@ -4,18 +4,9 @@ import bgGameDesign from '~/assets/images/KinadoIsland_Ss_Door.png'
 
 <template>
     <SectionsOneTitle :src="bgGameDesign" title="Game Design" />
-    <section class="bg-[var(--color-Dark)] stack-section" style="--z: 5">
-        <article class="stack-panel">
-        </article>
-    </section>
-    <section class="bg-[var(--color-Medium)] stack-section" style="--z: 6">
-        <article class="stack-panel">
-        </article>
-    </section>
-    <section class="bg-[var(--color-Light)] stack-section" style="--z: 7">
-        <article class="stack-panel">
-        </article>
-    </section>
+    <SectionsBook />
+    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (base)" color1="--color-Medium" color2="--color-Dark" :zIndex="6"/>
+    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (avancé)" color1="--color-Light" color2="--color-Medium" :zIndex="7"/>
     <section class="bg-[var(--color-Dark)] stack-section" style="--z: 8">
         <article class="stack-panel">
         </article>
