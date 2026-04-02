@@ -87,5 +87,109 @@ export const gameType = defineType({
       ],
       initialValue: [{ label: 'Placeholder Label', affichage: false }],
     },
+    {
+      name: 'mecanique',
+      title: 'Mécanique',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'mecanique',
+          title: 'Mécanique',
+          fields: [
+            {
+              name: 'titre',
+              title: 'Titre',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'texte',
+              title: 'Texte',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                  marks: {
+                    decorators: [
+                      { title: 'Gras', value: 'strong' },
+                      { title: 'Italique', value: 'em' },
+                      { title: 'Souligné', value: 'underline' },
+                      {
+                        title: 'Texte rouge',
+                        value: 'redText',
+                      },
+                      {
+                        title: 'Texte bleu',
+                        value: 'blueText',
+                      },
+                      {
+                        title: 'Texte vert',
+                        value: 'greenText',
+                      },
+                    ],
+                  },
+                  // lists: [
+                  //   { title: 'Liste à points', value: 'bullet' },
+                  //   { title: 'Liste numérotée', value: 'number' }
+                  // ],
+                },
+              ],
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'images',
+              title: 'Images',
+              type: 'array',
+              of: [
+                {
+                  type: 'image',
+                  options: {
+                    hotspot: true,
+                  },
+                  fields: [
+                    {
+                      name: 'alt',
+                      title: 'Texte alternatif',
+                      type: 'string',
+                      validation: (rule) => rule.required(),
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              name: 'categorie',
+              title: 'Catégorie',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Base', value: 'base' },
+                  { title: 'Avancé', value: 'advanced' },
+                ],
+              },
+            },
+            {
+              name: 'position',
+              title: 'Position',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Gauche', value: 'left' },
+                  { title: 'Droite', value: 'right' },
+                ],
+              },
+            },
+            {
+              name: 'center',
+              title: 'Center',
+              type: 'boolean',
+              initialValue: false,
+              validation: (rule) => rule.required(),
+            },
+          ],
+        },
+      ],
+    },
   ],
 })

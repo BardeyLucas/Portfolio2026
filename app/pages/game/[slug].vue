@@ -21,6 +21,18 @@ const gamesQuery = groq`
     "etiquettes": etiquettes[affichage == true]{
       label,
       affichage
+    },
+    "mecanique": mecanique[]{
+      titre,
+      texte,
+      center,
+      "images": images[]{
+        _type,
+        asset->{_id, url},
+        alt
+      },
+      categorie,
+      position
     }
   }
 `
@@ -139,7 +151,7 @@ Quisque vel pharetra ipsum, ut euismod tellus. Proin eget purus sagittis, egesta
           </section>
         </article>
     </section>
-    <component :is="GameContentComponent" v-if="GameContentComponent" />
+    <component :is="GameContentComponent" v-if="GameContentComponent" :game="game"/>
     <!-- Le composant spécifique au jeu se chargera ici -->
   </main>
 </template>

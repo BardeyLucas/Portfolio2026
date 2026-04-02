@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import bgGameDesign from '~/assets/images/KinadoIsland_Ss_Door.png'
+import type { Game } from '~/types/api/game';
+
+const props = defineProps<{
+    game: Game
+}>()
 </script>
 
 <template>
     <SectionsOneTitle :src="bgGameDesign" title="Game Design" />
     <SectionsBook />
-    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (base)" color1="--color-Medium" color2="--color-Dark" :zIndex="6"/>
-    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (avancé)" Line1="Cette rubrique n’est utile que si vous souhaitez en savoir plus" Line2="sur les fonctionnalités développer dans le jeu" color1="--color-Light" color2="--color-Medium" :zIndex="7"/>
+    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (base)" color1="--color-Medium" color2="--color-Dark" color3="--color-Medium" :game="props.game" categorie="base" :zIndex="6"/>
+    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (avancé)" Line1="Cette rubrique n’est utile que si vous souhaitez en savoir plus" Line2="sur les fonctionnalités développer dans le jeu" color1="--color-Light" color2="--color-Medium" color3="--color-Darker"  :game="props.game" categorie="advanced" :zIndex="7"/>
     <section class="bg-[var(--color-Dark)] stack-section" style="--z: 8">
         <article class="stack-panel">
         </article>

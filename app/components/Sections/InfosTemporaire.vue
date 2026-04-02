@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+
+import type { Game } from '~/types/api/game';
+
     const props = defineProps<{
         sectionTitle: string
         sousSectionTitle: string
@@ -6,8 +9,24 @@
         Line2?: string
         color1: string
         color2: string
+        color3: string
         zIndex : number
+        game: Game
+        categorie: 'base' | 'advanced'
     }>()
+
+const gameMecaniqueByCategorie = computed(() => {
+    return props.game.mecanique?.filter((m) => m.categorie === props.categorie)
+})
+
+const gameMecaniqueLeft = computed(() => {
+    return gameMecaniqueByCategorie.value?.filter((m) => m.position === 'left')
+}) 
+
+const gameMecaniqueRight = computed(() => {
+    return gameMecaniqueByCategorie.value?.filter((m) => m.position === 'right')
+}) 
+
 </script>
 
 <template>
@@ -26,10 +45,10 @@
                 </div>
                 <section class="w-full h-full flex gap-12">
                     <section class="h-full flex-1 flex flex-col gap-10">
-                        
+                        <CardTemporaireMecanique v-for="mecaniqueLeft in gameMecaniqueLeft" :key="mecaniqueLeft.titre" :mecanique="mecaniqueLeft" :color="color3" :center="mecaniqueLeft.center"/>
                     </section>
                     <section class="h-full flex-1 flex flex-col gap-10">
-
+                        <CardTemporaireMecanique v-for="mecaniqueRight in gameMecaniqueRight" :key="mecaniqueRight.titre" :mecanique="mecaniqueRight" :color="color3" :center="mecaniqueRight.center"/>
                     </section>
                 </section>
             </section>
