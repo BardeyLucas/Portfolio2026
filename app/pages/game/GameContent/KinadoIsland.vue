@@ -12,10 +12,7 @@ const props = defineProps<{
     <SectionsBook />
     <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (base)" color1="--color-Medium" color2="--color-Dark" color3="--color-Medium" :game="props.game" categorie="base" :zIndex="6"/>
     <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (avancé)" Line1="Cette rubrique n’est utile que si vous souhaitez en savoir plus" Line2="sur les fonctionnalités développer dans le jeu" color1="--color-Light" color2="--color-Medium" color3="--color-Darker"  :game="props.game" categorie="advanced" :zIndex="7"/>
-    <section class="bg-[var(--color-Dark)] stack-section" style="--z: 8">
-        <article class="stack-panel">
-        </article>
-    </section>
+    <SectionsPresentationInteractive13 sectionTitle="Section Game design" sousSectionTitle="Mapping" :game="props.game"/>
     <section class="bg-[var(--color-Light)] stack-section" style="--z: 9">
         <article class="stack-panel">
         </article>

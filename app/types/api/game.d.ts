@@ -28,6 +28,20 @@ export type GameMecanique = {
   position?: 'left' | 'right'
 }
 
+export type GameMap = {
+  id: number
+  titre: string
+  texte: any[]
+  images?: {
+    _type: 'image'
+    asset: {
+      _id: string
+      url?: string
+    }
+    alt: string
+  }
+}
+
 export type Game = {
   _id: string
   priority: number
@@ -36,4 +50,5 @@ export type Game = {
   cover: GameCover[]
   etiquettes: GameEtiquette[]
   mecanique?: GameMecanique[]
+  mapping?: GameMap[]
 }

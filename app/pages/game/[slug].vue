@@ -33,6 +33,16 @@ const gamesQuery = groq`
       },
       categorie,
       position
+    },
+    "mapping": mapping[]{
+      id,
+      titre,
+      texte,
+      "images": images{
+        _type,
+        asset->{_id, url},
+        alt
+      }
     }
   }
 `

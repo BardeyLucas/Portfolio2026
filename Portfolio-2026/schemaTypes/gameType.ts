@@ -191,5 +191,59 @@ export const gameType = defineType({
         },
       ],
     },
+    {
+      name: 'mapping',
+      title: 'Mapping',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'map',
+          title: 'Map',
+          fields: [
+            {
+              name: 'id',
+              title: 'ID',
+              type: 'number',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'titre',
+              title: 'Titre',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'texte',
+              title: 'Texte',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                },
+              ],
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'images',
+              title: 'Images',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Texte alternatif',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      validation: (rule) => rule.required(),
+    },
   ],
 })
