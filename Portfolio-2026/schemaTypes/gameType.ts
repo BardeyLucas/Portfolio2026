@@ -353,5 +353,32 @@ export const gameType = defineType({
         },
       ]
     },
+    {
+      name: 'conclusion',
+      title: 'Conclusion',
+      type: 'object',
+      fields: [
+        {
+          name: 'conclusionGlobal',
+          title: 'Conclusion globale',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+            },
+          ],
+        },
+        {
+          name: 'retenu',
+          title: 'Ce que j\'en retient',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+            },
+          ],
+        }
+      ]
+    },
   ],
 })

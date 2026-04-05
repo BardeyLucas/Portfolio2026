@@ -16,8 +16,5 @@ const props = defineProps<{
     <SectionsTwoScreenNavigatorAndInformator :subject="'inspirations'" :sectionNumber="4" :sousSection="true" sectionTitle="Section Game design" sousSectionTitle="Interface de jeu" color1="--color-Light" color2="--color-Medium" :game="props.game"/>
     <SectionsTwoScreenNavigatorAndInformator :subject="'inspirations'" :sectionNumber="9" :sousSection="false" sectionTitle="Inspirations" color1="--color-Darker" :game="props.game"/>
     <SectionsListe :subject="'ajouts'" sectionTitle="Ajouts à venir" color1="--color-Dark" :game="props.game"/>
-    <section class="bg-[var(--color-Light)] stack-section" style="--z: 12">
-        <article class="stack-panel">
-        </article>
-    </section>
+    <SectionsConclusion color1="--color-Light" color2="--color-Medium" :game="props.game"/>
 </template>

@@ -61,6 +61,10 @@ const gamesQuery = groq`
         cote
       },
       endTexte
+    },
+    "conclusion": conclusion{
+      conclusionGlobal,
+      retenu
     }
   }
 `

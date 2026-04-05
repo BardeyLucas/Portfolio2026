@@ -67,6 +67,11 @@ export type GameAjouts = {
   endTexte?: string
 }
 
+export type GameConclusion = {
+  conclusionGlobal?: any[]
+  retenu?: any[]
+}
+
 export type Game = {
   _id: string
   priority: number
@@ -78,4 +83,5 @@ export type Game = {
   mapping?: GameMap[]
   inspirations?: GameInspiration[]
   ajouts?: GameAjouts
+  conclusion?: GameConclusion
 }
