@@ -53,6 +53,14 @@ const gamesQuery = groq`
         asset->{_id, url},
         alt
       }
+    },
+    "ajouts": ajouts{
+      firstTexte,
+      "liste": liste[]{
+        texte,
+        cote
+      },
+      endTexte
     }
   }
 `

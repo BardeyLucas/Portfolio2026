@@ -1,5 +1,6 @@
 // schemas/GameType.ts
 import { defineType } from 'sanity'
+import { f } from 'vue-router/dist/router-CWoNjPRp.mjs';
 
 export const gameType = defineType({
   name: 'game',
@@ -300,6 +301,55 @@ export const gameType = defineType({
               ]
             },
           ]
+        },
+      ]
+    },
+    {
+      name: 'ajouts',
+      title: 'Ajouts à venir',
+      type: 'object',
+      fields: [
+        {
+          name: 'firstTexte',
+          title: 'Premier texte',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+            },
+          ],
+        },
+        {
+          name: 'liste',
+          title: 'Liste d\'ajout',
+          type: 'array',
+          of: [
+            {
+              name: 'ajout',
+              title: 'Ajout',
+              type: 'object',
+              fields: [
+                {
+                  name: 'texte',
+                  title: 'Texte',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                },
+                {
+                  name: 'cote',
+                  title: 'Coté',
+                  type: 'boolean',
+                  initialValue: false,
+                  validation: (rule) => rule.required(),
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'endTexte',
+          title: 'Dernier texte',
+          type: 'string',
         },
       ]
     },

@@ -56,6 +56,17 @@ export type GameInspiration = {
   }
 }
 
+export type GameAjout = {
+  texte: string
+  cote: boolean
+}
+
+export type GameAjouts = {
+  firstTexte?: any[]
+  liste?: GameAjout[]
+  endTexte?: string
+}
+
 export type Game = {
   _id: string
   priority: number
@@ -66,4 +77,5 @@ export type Game = {
   mecanique?: GameMecanique[]
   mapping?: GameMap[]
   inspirations?: GameInspiration[]
+  ajouts?: GameAjouts
 }
