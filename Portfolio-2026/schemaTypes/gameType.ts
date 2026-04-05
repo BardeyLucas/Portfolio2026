@@ -245,5 +245,63 @@ export const gameType = defineType({
       ],
       validation: (rule) => rule.required(),
     },
+    {
+      name: 'inspirations',
+      title: 'Inspirations',
+      type: 'array',
+      of: [
+        {
+          name: 'inspiration',
+          title: 'Inspiration',
+          type: 'object',
+          fields: [
+            {
+              name: 'titre',
+              title: 'Titre',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'resume',
+              title: 'Résumé',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                },
+              ],
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'description',
+              title: 'Description',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                },
+              ],
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Texte alternatif',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
   ],
 })

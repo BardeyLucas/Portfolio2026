@@ -42,6 +42,20 @@ export type GameMap = {
   }
 }
 
+export type GameInspiration = {
+  titre: string
+  resume: any[]
+  description: any[]
+  image?: {
+    _type: 'image'
+    asset: {
+      _id: string
+      url?: string
+    }
+    alt: string
+  }
+}
+
 export type Game = {
   _id: string
   priority: number
@@ -51,4 +65,5 @@ export type Game = {
   etiquettes: GameEtiquette[]
   mecanique?: GameMecanique[]
   mapping?: GameMap[]
+  inspirations?: GameInspiration[]
 }

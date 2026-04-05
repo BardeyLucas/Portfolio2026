@@ -43,6 +43,16 @@ const gamesQuery = groq`
         asset->{_id, url},
         alt
       }
+    },
+    "inspirations": inspirations[]{
+      titre,
+      resume,
+      description,
+      "image": image{
+        _type,
+        asset->{_id, url},
+        alt
+      }
     }
   }
 `
