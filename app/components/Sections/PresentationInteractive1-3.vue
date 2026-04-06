@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import type { Game } from '~/types/api/game';
-import { ref, h } from 'vue';
+import { ref, h, type Slots } from 'vue';
 import { PortableText } from '@portabletext/vue'
 
 const { urlFor } = useSanityImage()
@@ -16,13 +16,13 @@ const activeMapId = ref(0)
 
 const portableTextComponents = {
   block: {
-    h5: (_: any, { slots }: any) => h('h5', { class: 'text-2xl font-outfit mb-2.5' }, slots.default?.()),
+    h5: (_: unknown, { slots }: { slots: Slots }) => h('h5', { class: 'text-2xl font-outfit mb-2.5' }, slots.default?.()),
   },
   marks: {
-    redText: (_: any, { slots }: any) => h('span', { class: 'text-red-500 font-bold' }, slots.default?.()),
-    blueText: (_: any, { slots }: any) => h('span', { class: 'text-blue-500 font-bold' }, slots.default?.()),
-    greenText: (_: any, { slots }: any) => h('span', { class: 'text-green-500 font-bold' }, slots.default?.()),
-    strong: (_: any, { slots }: any) => h('strong', { class: 'font-extra-bold' }, slots.default?.()),
+    redText: (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'text-red-500 font-bold' }, slots.default?.()),
+    blueText: (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'text-blue-500 font-bold' }, slots.default?.()),
+    greenText: (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'text-green-500 font-bold' }, slots.default?.()),
+    strong: (_: unknown, { slots }: { slots: Slots }) => h('strong', { class: 'font-extra-bold' }, slots.default?.()),
   },
 }
 </script>
@@ -34,14 +34,13 @@ const portableTextComponents = {
                 <h3 class="text-4xl mb-2">{{ sousSectionTitle }}</h3>
                 <div class="w-full flex-1 flex flex-col gap-12 min-h-0">
                     <div class="w-full flex-1 flex gap-12 min-h-0">
-                        <section class="flex flex-col gap-10 flex-1 min-h-0 overflow-y-auto"
-                          v-for="map in props.game.mapping" :key="map.id" v-show="map.id === activeMapId">
+                        <section v-for="map in props.game.mapping" v-show="map.id === activeMapId" :key="map.id" class="flex flex-col gap-10 flex-1 min-h-0 overflow-y-auto">
                             <h4 class="text-5xl font-bold">{{ map.titre }}</h4>
                             <PortableText :value="map.texte" :components="portableTextComponents" />
                         </section>
                         <section class="h-full py-5 relative flex gap-5 justify-end shrink-0">
                             <div class="h-full aspect-[210/297] bg-[var(--color-Medium)] shrink-0">
-                                <img class="w-full h-full object-cover" v-if="props.game.mapping?.[activeMapId]?.images" :src="urlFor(props.game.mapping![activeMapId]!.images!)?.url()">
+                                <img v-if="props.game.mapping?.[activeMapId]?.images" class="w-full h-full object-cover" :src="urlFor(props.game.mapping![activeMapId]!.images!)?.url()">
                             </div>
                             <div class="flex flex-col gap-5 relative h-full items-start shrink-0">
                                 <button class="h-[calc((100%-2.5rem)/3)] aspect-[210/297] bg-[var(--color-Medium)]" @click="activeMapId = 0"><img :src="urlFor(props.game.mapping![0]!.images!)?.url()" alt=""></button>

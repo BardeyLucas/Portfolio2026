@@ -15,24 +15,24 @@ import LBicon from './icones/LBicon.vue';
                     <div class="flex flex-1 gap-12 shrink-0 max-h-24">
                         <div class="flex flex-col gap-2.5 w-full text-xl">
                             <label for="FirstName">Prenom *</label>
-                            <input type="text" id="FirstName" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12 "/>
+                            <input id="FirstName" type="text" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12 ">
                         </div>
                         <div class="flex flex-col gap-2.5 w-full text-xl">
                             <label for="LastName">Nom *</label>
-                            <input type="text" id="LastName" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12"/>
+                            <input id="LastName" type="text" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12">
                         </div>
                     </div>
                     <div class="flex flex-1 flex-col shrink-0 max-h-24 gap-2.5 w-full text-xl">
                         <label for="Email">Adresse email *</label>
-                        <input type="email" id="Email" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12"/>
+                        <input id="Email" type="email" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12">
                     </div>
                     <div class="flex flex-1 flex-col shrink-0 max-h-24 gap-2.5 w-full text-xl">
                         <label for="Subject">Objet *</label>
-                        <input type="text" id="Subject" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12"/>
+                        <input id="Subject" type="text" class="w-full bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-1.5 h-full min-h-12">
                     </div>
                     <div class="flex flex-col flex-2 gap-2.5 max-h-64 w-full text-xl min-h-0">
                         <label for="Message" class="shrink-0">Message *</label>
-                        <textarea id="Message" class="w-full flex-1 bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-2 resize-none" placeholder="Votre message..."></textarea>
+                        <textarea id="Message" class="w-full flex-1 bg-[var(--color-Light)] border border-[var(--color-Dark)] border-2 rounded-2xl px-4 py-2 resize-none" placeholder="Votre message..."/>
                     </div>
                 </form>
             </div>

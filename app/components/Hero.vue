@@ -1,7 +1,8 @@
-<script setup>
+<!-- eslint-disable vue/multi-word-component-names -->
+<script setup lang="ts">
 import { ref } from 'vue'
-const hoveredProject = ref(null)
-const getProjectStyle = (id, isBorder) => {
+const hoveredProject = ref<number | null>(null)
+const getProjectStyle = (id: number, isBorder: boolean) => {
     if (hoveredProject.value === null) {
         return {
             flex: isBorder ? 4 : 3,

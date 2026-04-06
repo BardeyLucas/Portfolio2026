@@ -5,8 +5,8 @@ import type { Game } from '~/types/api/game';
     const props = defineProps<{
         sectionTitle: string
         sousSectionTitle: string
-        Line1?: string
-        Line2?: string
+        line1?: string
+        line2?: string
         color1: string
         color2: string
         color3: string
@@ -36,10 +36,10 @@ const gameMecaniqueRight = computed(() => {
             <section class="w-full flex-1 flex rounded-3xl p-10 flex flex-col gap-10" :style="{ 'background-color': `var(${color2})` }">
                 <div class=" flex flex-col gap-2">
                     <h3 class="text-4xl mb-2">{{ sousSectionTitle }}</h3>
-                    <p class="text-lg" v-if="Line1">
-                        {{ Line1 }}
-                        <span v-if="Line2"><br/>
-                        {{ Line2 }}
+                    <p v-if="line1" class="text-lg">
+                        {{ line1 }}
+                        <span v-if="line2"><br>
+                        {{ line2 }}
                         </span>
                     </p>
                 </div>

@@ -14,15 +14,11 @@ const props = defineProps<{
             <h2 class="text-5xl mb-12 col-span-12">Conclusion</h2>
             <div class="col-span-7 flex flex-col gap-10 p-10 h-full" :style="{ 'background-color': `var(${props.color2})` }">
                 <h3 class="text-4xl font-outfit">Conclusion globale</h3>
-                <div v-for="item in game.conclusion?.conclusionGlobal" :key="item._key">
-                    <PortableText :value="item" />
-                </div>
+                <PortableText :value="game.conclusion?.conclusionGlobal" />
             </div>
             <div class="col-span-5 flex flex-col gap-10 p-10 h-full" :style="{ 'background-color': `var(${props.color2})` }">
                 <h3 class="text-4xl font-outfit">Ce que j'en retiens</h3>
-                <div v-for="item in game.conclusion?.retenu" :key="item._key">
-                    <PortableText :value="item" />
-                </div>
+                <PortableText :value="game.conclusion?.retenu" />
             </div>
         </article>
     </section>

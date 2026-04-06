@@ -8,13 +8,15 @@ const props = defineProps<{
 </script>
 
 <template>
+    <div>
     <SectionsOneTitle :src="bgGameDesign" title="Game Design" />
     <SectionsBook />
-    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (base)" color1="--color-Medium" color2="--color-Dark" color3="--color-Medium" :game="props.game" categorie="base" :zIndex="6"/>
-    <SectionsInfosTemporaire sectionTitle="Section Game design" sousSectionTitle="Mécaniques de jeu (avancé)" Line1="Cette rubrique n’est utile que si vous souhaitez en savoir plus" Line2="sur les fonctionnalités développer dans le jeu" color1="--color-Light" color2="--color-Medium" color3="--color-Darker"  :game="props.game" categorie="advanced" :zIndex="7"/>
-    <SectionsPresentationInteractive13 sectionTitle="Section Game design" sousSectionTitle="Mapping" :game="props.game"/>
-    <SectionsTwoScreenNavigatorAndInformator :subject="'inspirations'" :sectionNumber="4" :sousSection="true" sectionTitle="Section Game design" sousSectionTitle="Interface de jeu" color1="--color-Light" color2="--color-Medium" :game="props.game"/>
-    <SectionsTwoScreenNavigatorAndInformator :subject="'inspirations'" :sectionNumber="9" :sousSection="false" sectionTitle="Inspirations" color1="--color-Darker" :game="props.game"/>
-    <SectionsListe :subject="'ajouts'" sectionTitle="Ajouts à venir" color1="--color-Dark" :game="props.game"/>
+    <SectionsInfosTemporaire section-title="Section Game design" sous-section-title="Mécaniques de jeu (base)" color1="--color-Medium" color2="--color-Dark" color3="--color-Medium" :game="props.game" categorie="base" :z-index="6"/>
+    <SectionsInfosTemporaire section-title="Section Game design" sous-section-title="Mécaniques de jeu (avancé)" line1="Cette rubrique n’est utile que si vous souhaitez en savoir plus" line2="sur les fonctionnalités développer dans le jeu" color1="--color-Light" color2="--color-Medium" color3="--color-Darker"  :game="props.game" categorie="advanced" :z-index="7"/>
+    <SectionsPresentationInteractive13 section-title="Section Game design" sous-section-title="Mapping" :game="props.game"/>
+    <SectionsTwoScreenNavigatorAndInformator :subject="'inspirations'" :section-number="4" :sous-section="true" section-title="Section Game design" sous-section-title="Interface de jeu" color1="--color-Light" color2="--color-Medium" :game="props.game"/>
+    <SectionsTwoScreenNavigatorAndInformator :subject="'inspirations'" :section-number="9" :sous-section="false" section-title="Inspirations" color1="--color-Darker" :game="props.game"/>
+    <SectionsListe :subject="'ajouts'" section-title="Ajouts à venir" color1="--color-Dark" :game="props.game"/>
     <SectionsConclusion color1="--color-Light" color2="--color-Medium" :game="props.game"/>
+    </div>   
 </template>

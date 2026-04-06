@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL || 'http://localhost:4000',
     }
   },
-  modules: ['@nuxtjs/google-fonts', '@nuxtjs/sanity'],
+  modules: ['@nuxtjs/google-fonts', '@nuxtjs/sanity', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {

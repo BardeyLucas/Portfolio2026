@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useSanityClient } from '~/composables/sanity'
 import { useRoute } from 'vue-router'
+import { useSectionScript } from '~/composables/sectionScript'
+import { defineAsyncComponent, computed } from 'vue'
+
 const { urlFor } = useSanityImage()
 
 const route = useRoute()
@@ -13,6 +16,7 @@ const gamesQuery = groq`
     priority,
     hero,
     title,
+    state,
     "cover": cover[]{
       _type,
       asset->{_id, url},
@@ -78,9 +82,6 @@ const getCoverUrl = (cover?: Array<{ _type: string; asset: { _id: string; url: s
 
 console.log("slug: ", route.params.slug)
 
-import { useSectionScript } from '~/composables/sectionScript'
-import { defineAsyncComponent, computed } from 'vue'
-
 useSectionScript()
 
 const GameContentComponent = computed(() => {
@@ -106,7 +107,7 @@ const GameContentComponent = computed(() => {
           class="absolute top-0 left-0 w-full h-full object-cover object-center m-0"
           :alt="game?.cover?.[0]?.alt || game?.title || 'Image du jeu'"
           :src="getCoverUrl(game?.cover)"
-        />
+          >
         <div class="absolute bottom-0 left-0 w-full h-40 flex flex-col gap-4 items-start justify-center px-12 bg-gradient-to-t from-[var(--color-Darker)] via-[#0D0D0D66] via-80% to-transparent font-outfit">
           <h1 class="text-6xl">{{ game?.title }}</h1>
           <div class="flex gap-2.5 text-xl">
@@ -141,11 +142,11 @@ const GameContentComponent = computed(() => {
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameInfo class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Date de sortie de<br/>la dernière mise à jour : 00/00/00</p>
+            <p class="font-outfit text-2xl">Date de sortie de<br>la dernière mise à jour : 00/00/00</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameInfo class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Date de sortie de<br/>la version Beta : Bientôt annoncée</p>
+            <p class="font-outfit text-2xl">Date de sortie de<br>la version Beta : Bientôt annoncée</p>
           </div>
         </section>
       </article>

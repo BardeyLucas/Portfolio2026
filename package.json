@@ -7,9 +7,12 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@nuxt/eslint": "^1.15.2",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/sanity": "^2.2.0",
     "@sanity/client": "^7.20.0",

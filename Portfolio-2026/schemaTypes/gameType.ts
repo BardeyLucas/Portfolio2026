@@ -88,6 +88,20 @@ export const gameType = defineType({
       initialValue: [{ label: 'Placeholder Label', affichage: false }],
     },
     {
+      name: 'state',
+      title: 'Etat du projet',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Annulé', value: 'cancelled' },
+          { title: 'En attente', value: 'on-hold' },
+          { title: 'En cours', value: 'in-progress' },
+          { title: 'Terminé', value: 'completed' },
+        ],
+      },
+      validation: (rule) => rule.required(),
+    },
+    {
       name: 'mecanique',
       title: 'Mécanique',
       type: 'array',

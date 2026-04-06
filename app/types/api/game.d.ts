@@ -14,7 +14,7 @@ export type GameEtiquette = {
 
 export type GameMecanique = {
   titre: string
-  texte: any[]
+  texte: block[]
   center: boolean
   images?: {
     _type: 'image'
@@ -31,7 +31,7 @@ export type GameMecanique = {
 export type GameMap = {
   id: number
   titre: string
-  texte: any[]
+  texte: block[]
   images?: {
     _type: 'image'
     asset: {
@@ -44,8 +44,8 @@ export type GameMap = {
 
 export type GameInspiration = {
   titre: string
-  resume: any[]
-  description: any[]
+  resume: block[]
+  description: block[]
   image?: {
     _type: 'image'
     asset: {
@@ -62,21 +62,24 @@ export type GameAjout = {
 }
 
 export type GameAjouts = {
-  firstTexte?: any[]
+  firstTexte?: block[]
   liste?: GameAjout[]
   endTexte?: string
 }
 
 export type GameConclusion = {
-  conclusionGlobal?: any[]
-  retenu?: any[]
+  conclusionGlobal?: block[]
+  retenu?: block[]
 }
+
+export type GameState = 'cancelled' | 'on-hold' | 'in-progress' | 'completed'
 
 export type Game = {
   _id: string
   priority: number
   hero: boolean
   title: string
+  state: GameState
   cover: GameCover[]
   etiquettes: GameEtiquette[]
   mecanique?: GameMecanique[]

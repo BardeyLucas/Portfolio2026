@@ -31,7 +31,7 @@ const gamesQuery = groq`
   }
 `
 
-const { data: games, error: gamesError } = useAsyncData('games', () => client.fetch(gamesQuery))
+const { data: games } = useAsyncData('games', () => client.fetch(gamesQuery))
 
 </script>
 <template>
