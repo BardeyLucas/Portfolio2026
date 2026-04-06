@@ -237,6 +237,64 @@ export const gameType = defineType({
       ],
     },
     {
+      name: 'About',
+      title: 'À propos',
+      type: 'object',
+      fields: [
+        {
+          name: 'texte',
+          title: 'Texte',
+          type: 'array',
+          of: [
+            {
+              type: 'block',
+              marks: {
+                decorators: [
+                  { title: 'Gras', value: 'strong' },
+                  { title: 'Italique', value: 'em' },
+                  { title: 'Souligné', value: 'underline' },
+                  {
+                    title: 'Texte rouge',
+                    value: 'redText',
+                  },
+                  {
+                    title: 'Texte bleu',
+                    value: 'blueText',
+                  },
+                  {
+                    title: 'Texte vert',
+                    value: 'greenText',
+                  },
+                ],
+              },
+            },
+          ],
+          validation: (rule) => rule.required(),
+        },
+        {
+          name: 'images',
+          title: 'Images',
+          type: 'array',
+          of: [
+            {
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Texte alternatif',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'mecanique',
       title: 'Mécanique',
       type: 'array',

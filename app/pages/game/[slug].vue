@@ -3,6 +3,7 @@ import { useSanityClient } from '~/composables/sanity'
 import { useRoute } from 'vue-router'
 import { useSectionScript } from '~/composables/sectionScript'
 import { defineAsyncComponent, computed } from 'vue'
+import { PortableText } from '@portabletext/vue'
 
 const { urlFor } = useSanityImage()
 
@@ -85,6 +86,14 @@ const gamesQuery = groq`
       dateDeSortie{
         type,
         date
+      }
+    },
+    About{
+      texte,
+      "images": images[]{
+        _type,
+        asset->{_id, url},
+        alt
       }
     }
   }
@@ -198,14 +207,10 @@ const formatDate = (dateString?: string) => {
           <div class="col-span-7 flex flex-col justify-center gap-10">
             <h2 class="text-3xl font-outfit">A propos de ce jeu</h2>
             <div class="flex flex-col gap-4 text-lg">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas consectetur turpis, a maximus erat volutpat eget.</p>
-              <p>Mauris elementum porttitor molestie. Etiam pulvinar, justo et tincidunt ornare, ipsum eros maximus augue, nec euismod risus neque ut libero. Duis accumsan, mauris quis tempus feugiat, nibh nunc hendrerit neque, nec placerat felis velit quis leo. Vestibulum sem arcu, efficitur sed auctor eget, maximus in quam. Donec sit amet libero quis nisl aliquam pharetra.</p>
-              <p>Mauris vel leo eu nunc congue tristique. Cras sed condimentum tortor. Nullam quis nisl nec odio convallis mollis. Vestibulum orci ex, ultrices nec erat sed, dictum finibus dui. Vivamus a risus nec tellus mattis consectetur.</p>
-              <p>Maecenas pretium at lorem ut sollicitudin. Aenean tincidunt magna quis venenatis finibus. Nam volutpat ac diam in placerat. Nam varius leo turpis, eu tempor nibh rutrum mattis. 
-Quisque vel pharetra ipsum, ut euismod tellus. Proin eget purus sagittis, egestas enim ac, tincidunt diam. Donec finibus mauris nec nisi congue, quis pellentesque mauris euismod. Mauris eu lorem sollicitudin, tempor mauris sit amet, laoreet nulla.</p>
+              <PortableText :value="game?.About?.texte"/>
             </div>
           </div>
-          <img class="col-span-5 h-full object-cover" src="~/assets/images/KinadoIsland_Ss_Fontaine.png" alt="Placeholder image">
+          <img v-if="game?.About?.images?.[0]" class="col-span-5 h-full object-cover" :src="urlFor(game?.About?.images?.[0])?.url()" :alt="game?.About?.images?.[0]?.alt">
         </article>
     </section>
     <section class="bg-[var(--color-Medium)] stack-section" style="--z: 3">

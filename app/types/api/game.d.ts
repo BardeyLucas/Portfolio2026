@@ -93,6 +93,18 @@ export type GameDetails = {
   dateDeSortie?: GameDetailsDateDeSortie
 }
 
+export type GameAbout = {
+  texte: block[]
+  images?: {
+    _type: 'image'
+    asset: {
+      _id: string
+      url?: string
+    }
+    alt: string
+  }[]
+}
+
 export type GameState = 'cancelled' | 'on-hold' | 'in-progress' | 'completed' | 'finished'
 
 export type Game = {
@@ -110,4 +122,5 @@ export type Game = {
   conclusion?: GameConclusion
   downloadLink?: GameDownloadLink[]
   details?: GameDetails
+  About?: GameAbout
 }
