@@ -80,6 +80,19 @@ export type GameDownloadLink = {
   url: string
 }
 
+export type GameDetailsDateDeSortie = {
+  type?: 'beta' | 'exact'
+  date?: string
+}
+
+export type GameDetails = {
+  playerNumber: 'solo' | 'multiplayer'
+  langue: Array<'fr' | 'en'>
+  genre: Array<'action-platformer' | 'narrative-adventure' | 'rpg' | 'simulation' | 'strategy' | 'puzzle' | 'collectathon' | 'other'>
+  dateDeSortieLastUpdate?: string
+  dateDeSortie?: GameDetailsDateDeSortie
+}
+
 export type GameState = 'cancelled' | 'on-hold' | 'in-progress' | 'completed' | 'finished'
 
 export type Game = {
@@ -96,4 +109,5 @@ export type Game = {
   ajouts?: GameAjouts
   conclusion?: GameConclusion
   downloadLink?: GameDownloadLink[]
+  details?: GameDetails
 }

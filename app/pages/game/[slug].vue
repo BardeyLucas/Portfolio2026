@@ -76,6 +76,16 @@ const gamesQuery = groq`
       versionActuelle,
       operatingSystem,
       url
+    },
+    details{
+      playerNumber,
+      langue,
+      genre,
+      dateDeSortieLastUpdate,
+      dateDeSortie{
+        type,
+        date
+      }
     }
   }
 `
@@ -111,6 +121,17 @@ const gameDownLoadLinkActuelle = computed(() => {
 const gameDownLoadLinkAnterieur = computed(() => {
   return game.value?.downloadLink?.filter((link: { versionActuelle: unknown }) => !link.versionActuelle)
 })
+
+const formatDate = (dateString?: string) => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  if (isNaN(date.getTime())) return dateString
+  return new Intl.DateTimeFormat('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(date)
+}
 
 </script>
 <template>
@@ -150,23 +171,24 @@ const gameDownLoadLinkAnterieur = computed(() => {
         <section class="col-start-8 col-span-4 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-2.5">
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGamePlayer class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Solo</p>
+            <p class="font-outfit text-2xl">{{ game?.details?.playerNumber === 'solo' ? 'Solo' : 'Multijoueur' }}</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameLanguage class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Français</p>
+            <p class="font-outfit text-2xl">{{ game?.details?.langue?.map((l: string) => l === 'fr' ? 'Français' : l === 'en' ? 'Anglais' : l).join(' / ') }}</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameManette class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Action platformer/ Collectathon</p>
+            <p class="font-outfit text-2xl">{{ game?.details?.genre?.map((g: string) => g === 'action-platformer' ? 'Action Platformer' : g === 'narrative-adventure' ? 'Narrative Adventure' : g === 'rpg' ? 'RPG' : g === 'simulation' ? 'Simulation' : g === 'strategy' ? 'Strategy' : g === 'puzzle' ? 'Puzzle' : g === 'collectathon' ? 'Collectathon' : g === 'other' ? 'Autre' : g).join(' / ') }}</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameInfo class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Date de sortie de<br>la dernière mise à jour : 00/00/00</p>
+            <p class="font-outfit text-2xl">Date de sortie de<br>la dernière mise à jour : {{ formatDate(game?.details?.dateDeSortieLastUpdate) }}</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameInfo class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Date de sortie de<br>la version Beta : Bientôt annoncée</p>
+            <p v-if="game?.details?.dateDeSortie?.type === 'release'" class="font-outfit text-2xl">Date de sortie de<br>la version Beta : <span v-if="game?.details?.dateDeSortie?.date">{{ formatDate(game?.details?.dateDeSortie?.date) }}</span><span v-else>Bientôt annoncée</span></p>
+            <p v-if="game?.details?.dateDeSortie?.type === 'beta'" class="font-outfit text-2xl">Date de sortie de<br>du jeu : <span v-if="game?.details?.dateDeSortie?.date">{{ formatDate(game?.details?.dateDeSortie?.date) }}</span><span v-else>Bientôt annoncée</span></p>
           </div>
         </section>
       </article>

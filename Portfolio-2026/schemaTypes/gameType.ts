@@ -132,7 +132,7 @@ export const gameType = defineType({
             },
             {
               name: 'operatingSystem',
-              title: 'Moteur d\exploitation',
+              title: 'Moteur d\'exploitation',
               type: 'string',
               options: {
                 list: [
@@ -152,6 +152,89 @@ export const gameType = defineType({
           ]
         },
       ]
+    },
+    {
+      name: 'details',
+      title: 'Détails',
+      type: 'object',
+      fields: [
+        {
+          name: 'playerNumber',
+          title: 'Nombre de joueurs',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Solo', value: 'solo' },
+              { title: 'Multijoueur', value: 'multiplayer' },
+            ],
+          },
+          validation: (rule) => rule.required(),
+        },
+        {
+          name: 'langue',
+          title: 'Langue',
+          type: 'array',
+          of: [{
+            type: 'string',
+            options: {
+              list: [
+                { title: 'Français', value: 'fr' },
+                { title: 'Anglais', value: 'en' },
+              ],
+            },
+          }],
+          validation: (rule) => rule.required().unique(),
+        },
+        {
+          name: 'genre',
+          title: 'Genre',
+          type: 'array',
+          of: [{
+            type: 'string',
+            options: {
+              list: [
+                { title: 'Action platformer', value: 'action-platformer' },
+                { title: 'Aventure narrative', value: 'narrative-adventure' },
+                { title: 'RPG', value: 'rpg' },
+                { title: 'Simulation', value: 'simulation' },
+                { title: 'Stratégie', value: 'strategy' },
+                { title: 'Puzzle', value: 'puzzle' },
+                { title: 'Collectathon', value: 'collectathon' },
+                { title: 'Autre', value: 'other' },
+              ],
+            },
+          }],
+          validation: (rule) => rule.required().unique(),
+        },
+        {
+          name: 'dateDeSortieLastUpdate',
+          title: 'Date de sortie / dernière mise à jour',
+          type: 'date',
+        },
+        {
+          name: 'dateDeSortie',
+          title: 'Date de sortie',
+          type: 'object',
+          fields: [
+            {
+              name: 'type',
+              title: 'Type',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Beta', value: 'beta' },
+                  { title: 'Véritable', value: 'exact' },
+                ],
+              },
+            },
+            {
+              name: 'date',
+              title: 'Date',
+              type: 'date',
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'mecanique',
@@ -195,10 +278,6 @@ export const gameType = defineType({
                       },
                     ],
                   },
-                  // lists: [
-                  //   { title: 'Liste à points', value: 'bullet' },
-                  //   { title: 'Liste numérotée', value: 'number' }
-                  // ],
                 },
               ],
               validation: (rule) => rule.required(),
