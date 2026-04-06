@@ -198,6 +198,7 @@ export const gameType = defineType({
                 { title: 'RPG', value: 'rpg' },
                 { title: 'Simulation', value: 'simulation' },
                 { title: 'Stratégie', value: 'strategy' },
+                { title: 'Platformer', value: 'platformer' },
                 { title: 'Puzzle', value: 'puzzle' },
                 { title: 'Collectathon', value: 'collectathon' },
                 { title: 'Autre', value: 'other' },
@@ -223,7 +224,7 @@ export const gameType = defineType({
               options: {
                 list: [
                   { title: 'Beta', value: 'beta' },
-                  { title: 'Véritable', value: 'exact' },
+                  { title: 'Véritable', value: 'release' },
                 ],
               },
             },
@@ -289,6 +290,148 @@ export const gameType = defineType({
                   validation: (rule) => rule.required(),
                 },
               ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'actualite',
+      title: 'Actualité',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'actualite',
+          title: 'Actualité',
+          fields: [
+            {
+              name: 'titre',
+              title: 'Titre',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Texte alternatif',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                },
+              ]
+            },
+            {
+              name: 'resume',
+              title: 'Résumé',
+              type: 'string',
+            },
+            {
+              name: 'texte',
+              title: 'Texte',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                  marks: {
+                    decorators: [
+                      { title: 'Gras', value: 'strong' },
+                      { title: 'Italique', value: 'em' },
+                      { title: 'Souligné', value: 'underline' },
+                      {
+                        title: 'Texte rouge',
+                        value: 'redText',
+                      },
+                      {
+                        title: 'Texte bleu',
+                        value: 'blueText',
+                      },
+                      {
+                        title: 'Texte vert',
+                        value: 'greenText',
+                      },
+                    ],
+                  },
+                },
+              ],
+              validation: (rule) => rule.required(),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'patchNote',
+      title: 'Notes de patch',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'patchNote',
+          title: 'Note de patch',
+          fields: [
+            {
+              name: 'titre',
+              title: 'Titre',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Texte alternatif',
+                  type: 'string',
+                  validation: (rule) => rule.required(),
+                },
+              ]
+            },
+            {
+              name: 'resume',
+              title: 'Résumé',
+              type: 'string',
+            },
+            {
+              name: 'texte',
+              title: 'Texte',
+              type: 'array',
+              of: [
+                {
+                  type: 'block',
+                  marks: {
+                    decorators: [
+                      { title: 'Gras', value: 'strong' },
+                      { title: 'Italique', value: 'em' },
+                      { title: 'Souligné', value: 'underline' },
+                      {
+                        title: 'Texte rouge',
+                        value: 'redText',
+                      },
+                      {
+                        title: 'Texte bleu',
+                        value: 'blueText',
+                      },
+                      {
+                        title: 'Texte vert',
+                        value: 'greenText',
+                      },
+                    ],
+                  },
+                },
+              ],
+              validation: (rule) => rule.required(),
             },
           ],
         },

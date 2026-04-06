@@ -81,14 +81,14 @@ export type GameDownloadLink = {
 }
 
 export type GameDetailsDateDeSortie = {
-  type?: 'beta' | 'exact'
+  type?: 'beta' | 'release'
   date?: string
 }
 
 export type GameDetails = {
   playerNumber: 'solo' | 'multiplayer'
   langue: Array<'fr' | 'en'>
-  genre: Array<'action-platformer' | 'narrative-adventure' | 'rpg' | 'simulation' | 'strategy' | 'puzzle' | 'collectathon' | 'other'>
+  genre: Array<'action-platformer' | 'narrative-adventure' | 'rpg' | 'simulation' | 'strategy' | 'puzzle' | 'platformer' | 'collectathon' | 'other'>
   dateDeSortieLastUpdate?: string
   dateDeSortie?: GameDetailsDateDeSortie
 }
@@ -103,6 +103,34 @@ export type GameAbout = {
     }
     alt: string
   }[]
+}
+
+export type GameActualite = {
+  titre: string
+  image?: {
+    _type: 'image'
+    asset: {
+      _id: string
+      url?: string
+    }
+    alt: string
+  }
+  resume?: string
+  texte: block[]
+}
+
+export type GamePatchNote = {
+  titre: string
+  image?: {
+    _type: 'image'
+    asset: {
+      _id: string
+      url?: string
+    }
+    alt: string
+  }
+  resume?: string
+  texte: block[]
 }
 
 export type GameState = 'cancelled' | 'on-hold' | 'in-progress' | 'completed' | 'finished'
@@ -123,4 +151,6 @@ export type Game = {
   downloadLink?: GameDownloadLink[]
   details?: GameDetails
   About?: GameAbout
+  actualite?: GameActualite[]
+  patchNote?: GamePatchNote[]
 }

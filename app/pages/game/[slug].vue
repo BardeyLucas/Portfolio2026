@@ -95,6 +95,26 @@ const gamesQuery = groq`
         asset->{_id, url},
         alt
       }
+    },
+    "actualite": actualite[]{
+      titre,
+      "image": image{
+        _type,
+        asset->{_id, url},
+        alt
+      },
+      resume,
+      texte
+    },
+    "patchNote": patchNote[]{
+      titre,
+      "image": image{
+        _type,
+        asset->{_id, url},
+        alt
+      },
+      resume,
+      texte
     }
   }
 `
@@ -188,7 +208,7 @@ const formatDate = (dateString?: string) => {
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameManette class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">{{ game?.details?.genre?.map((g: string) => g === 'action-platformer' ? 'Action Platformer' : g === 'narrative-adventure' ? 'Narrative Adventure' : g === 'rpg' ? 'RPG' : g === 'simulation' ? 'Simulation' : g === 'strategy' ? 'Strategy' : g === 'puzzle' ? 'Puzzle' : g === 'collectathon' ? 'Collectathon' : g === 'other' ? 'Autre' : g).join(' / ') }}</p>
+            <p class="font-outfit text-2xl">{{ game?.details?.genre?.map((g: string) => g === 'action-platformer' ? 'Action Platformer' : g === 'narrative-adventure' ? 'Narrative Adventure' : g === 'rpg' ? 'RPG' : g === 'simulation' ? 'Simulation' : g === 'strategy' ? 'Strategy' : g === 'platformer' ? 'Platformer' : g === 'puzzle' ? 'Puzzle' : g === 'collectathon' ? 'Collectathon' : g === 'other' ? 'Autre' : g).join(' / ') }}</p>
           </div>
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
             <IconesGameInfo class="w-10 h-10"/>
@@ -210,24 +230,22 @@ const formatDate = (dateString?: string) => {
               <PortableText :value="game?.About?.texte"/>
             </div>
           </div>
-          <img v-if="game?.About?.images?.[0]" class="col-span-5 h-full object-cover" :src="urlFor(game?.About?.images?.[0])?.url()" :alt="game?.About?.images?.[0]?.alt">
+          <div class="col-span-5 h-full bg-[var(--color-Medium)]">
+            <img v-if="game?.About?.images?.[0]" class="w-full h-full object-cover" :src="urlFor(game?.About?.images?.[0])?.url()" :alt="game?.About?.images?.[0]?.alt">
+          </div>
         </article>
     </section>
     <section class="bg-[var(--color-Medium)] stack-section" style="--z: 3">
         <article class="stack-panel grille pb-12 pt-36 h-screen">
           <section class="col-span-6 bg-[var(--color-Dark)] flex flex-col p-12 gap-10 rounded-t-2xl h-full overflow-y-auto" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);">
             <h2 class="text-3xl font-outfit">Actualités</h2>
-            <CardActualites/>
-            <CardActualites/>
-            <CardActualites/>
-
+            <CardActualites v-for="actualite in game?.actualite" :key="actualite._id" :actualite="actualite"/>
+            <p v-if="!game?.actualite?.length" class="text-2xl opacity-80">Aucune actualité pour le moment.</p>
           </section>
           <section class="col-span-6 bg-[var(--color-Dark)] flex flex-col p-12 gap-10 rounded-t-2xl h-full overflow-y-auto" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);">
             <h2 class="text-3xl font-outfit overflow-x">Patch notes</h2>
-            <CardPatchNotes/>
-            <CardPatchNotes/>
-            <CardPatchNotes/>
-
+            <CardPatchNotes v-for="patchNote in game?.patchNote" :key="patchNote._id" :patch-note="patchNote"/>
+            <p v-if="!game?.patchNote?.length" class="text-2xl opacity-80">Aucun patch note pour le moment.</p>
           </section>
         </article>
     </section>
