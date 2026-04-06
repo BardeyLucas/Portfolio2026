@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 <template>
     <section class="stack-section" style="--z: 12" :style="{ 'background-color': `var(${props.color1})` }">
-        <article class="stack-panel px-12 pt-36 pb-12 relative h-screen max-h-screen grille content-start">
+        <article class="stack-panel px-12 pt-36 pb-12 relative grille content-start">
             <h2 class="text-5xl mb-12 col-span-12">Conclusion</h2>
             <div class="col-span-7 flex flex-col gap-10 p-10 h-full" :style="{ 'background-color': `var(${props.color2})` }">
                 <h3 class="text-4xl font-outfit">Conclusion globale</h3>

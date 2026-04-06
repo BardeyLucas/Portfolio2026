@@ -1,7 +1,11 @@
+<script setup lang="ts">
+const route = useRoute()
+</script>
+
 <template>
   <HeaderComponents />
-    <NuxtPage class="font-[var(Open-Sans)]"/>
-  <FooterComponents />
+  <NuxtPage class="font-[var(Open-Sans)]"/>
+  <FooterComponents v-if="route.name !== 'game-slug'" />
 </template>
 <style>
   html{

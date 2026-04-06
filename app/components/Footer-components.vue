@@ -4,7 +4,7 @@ import LBicon from './icones/LBicon.vue';
 </script>
 
 <template>
-    <footer class="bg-[var(--color-Medium)] max-w-screen h-screen flex flex-col z-[900]">
+    <footer class="bg-[var(--color-Medium)] max-w-screen h-screen flex flex-col z-[900] sticky">
         <div class="flex justify-center items-center w-full py-12 h-fit shrink-0">
             <LBicon class="h-24 w-24"/>
         </div>

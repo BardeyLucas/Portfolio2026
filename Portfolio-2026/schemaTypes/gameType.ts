@@ -1,6 +1,5 @@
 // schemas/GameType.ts
 import { defineType } from 'sanity'
-import { f } from 'vue-router/dist/router-CWoNjPRp.mjs';
 
 export const gameType = defineType({
   name: 'game',
@@ -244,7 +243,6 @@ export const gameType = defineType({
           ],
         },
       ],
-      validation: (rule) => rule.required(),
     },
     {
       name: 'inspirations',

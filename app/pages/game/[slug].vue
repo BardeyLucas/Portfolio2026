@@ -183,7 +183,8 @@ Quisque vel pharetra ipsum, ut euismod tellus. Proin eget purus sagittis, egesta
           </section>
         </article>
     </section>
-    <component :is="GameContentComponent" v-if="GameContentComponent" :game="game"/>
     <!-- Le composant spécifique au jeu se chargera ici -->
+    <component :is="GameContentComponent" v-if="GameContentComponent" :game="game"/>
+    <FooterComponents />
   </main>
 </template>
