@@ -96,10 +96,62 @@ export const gameType = defineType({
           { title: 'Annulé', value: 'cancelled' },
           { title: 'En attente', value: 'on-hold' },
           { title: 'En cours', value: 'in-progress' },
-          { title: 'Terminé', value: 'completed' },
+          { title: 'Terminé (1.0)', value: 'completed' },
+          { title: 'Fini', value: 'finished' },
         ],
       },
       validation: (rule) => rule.required(),
+    },
+    {
+      name: 'downloadLink',
+      title: 'Lien de téléchargement',
+      type: 'array',
+      of: [
+        {
+          name: 'version',
+          title: 'Version',
+          type: 'object',
+          fields: [
+            {
+              name: 'versionName',
+              title: 'Nom de la version',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'versionNumber',
+              title: 'Numéro de la version',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'versionActuelle',
+              title: 'Version actuelle ?',
+              type: 'boolean',
+              initialValue: false,
+            },
+            {
+              name: 'operatingSystem',
+              title: 'Moteur d\exploitation',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Windows', value: 'windows' },
+                  { title: 'MacOS', value: 'macos' },
+                  { title: 'Linux', value: 'linux' },
+                ],
+              },
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'url',
+              title: 'URL',
+              type: 'url',
+              validation: (rule) => rule.required(),
+            },
+          ]
+        },
+      ]
     },
     {
       name: 'mecanique',

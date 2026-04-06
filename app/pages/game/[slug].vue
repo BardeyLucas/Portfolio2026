@@ -69,6 +69,13 @@ const gamesQuery = groq`
     "conclusion": conclusion{
       conclusionGlobal,
       retenu
+    },
+    downloadLink[]{
+      versionName,
+      versionNumber,
+      versionActuelle,
+      operatingSystem,
+      url
     }
   }
 `
@@ -79,8 +86,6 @@ const getCoverUrl = (cover?: Array<{ _type: string; asset: { _id: string; url: s
   const firstCover = cover?.[0]
   return firstCover ? (urlFor(firstCover)?.url() ?? '') : ''
 }
-
-console.log("slug: ", route.params.slug)
 
 useSectionScript()
 
@@ -98,6 +103,15 @@ const GameContentComponent = computed(() => {
     })
   )
 })
+
+const gameDownLoadLinkActuelle = computed(() => {
+  return game.value?.downloadLink?.filter((link: { versionActuelle: unknown }) => link.versionActuelle)
+})
+
+const gameDownLoadLinkAnterieur = computed(() => {
+  return game.value?.downloadLink?.filter((link: { versionActuelle: unknown }) => !link.versionActuelle)
+})
+
 </script>
 <template>
   <main class="w-full">
@@ -118,14 +132,20 @@ const GameContentComponent = computed(() => {
       <article class="grille pt-12 pb-24">
         <section class="col-start-2 col-span-6 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-5">
           <div class="bg-[var(--color-Medium)] flex flex-col px-7 py-5 gap-5">
-            <h2 class="text-2xl font-outfit">Jeu en accès anticipé</h2>
-            <p><span class="font-bold">Remarque :</span> Les jeux en accès anticipé ne sont pas terminés, ils peuvent changer de façon significative. Si ce jeu ne vous intéresse pas dans son état actuel, vous devriez attendre pour voir s'il se développe davantage.</p>
+            <h2 v-if="game?.state === 'finished'" class="text-2xl font-outfit">Jeu terminé</h2>
+            <p v-if="game?.state === 'finished'"><span class="font-bold">Remarque :</span> Le jeu est terminé et il n'est pas prévu qu'il reçoive de nouvelles mises à jour à l'avenir.</p>
+            <h2 v-if="game?.state === 'completed'" class="text-2xl font-outfit">Jeu complété</h2>
+            <p v-if="game?.state === 'completed'"><span class="font-bold">Remarque :</span> Le jeu est actuellement complet mais il n'est pas exclus qu'il reçoive de nouvelles mises à jour à l'avenir.</p>
+            <h2 v-if="game?.state === 'on-hold' || game?.state === 'in-progress'" class="text-2xl font-outfit">Jeu en accès anticipé</h2>
+            <p v-if="game?.state === 'on-hold' || game?.state === 'in-progress'"><span class="font-bold">Remarque :</span> Les jeux en accès anticipé ne sont pas terminés, ils peuvent changer de façon significative. Si ce jeu ne vous intéresse pas dans son état actuel, vous devriez attendre pour voir s'il se développe davantage.</p>
+            <h2 v-if="game?.state === 'cancelled'" class="text-2xl font-outfit">Jeu annulé</h2>
+            <p v-if="game?.state === 'cancelled'"><span class="font-bold">Remarque :</span> Le jeu est annulé, mais il est toujours possible qu'il reçoive des patchs ultérieurement.</p>
           </div>
           <h2 class="text-3xl font-outfit">Version actuelle</h2>
-          <cardGameDownload />
-          <h2 class="text-3xl font-outfit">Version actuelle</h2>
-          <cardGameDownload />
-          <button class="bg-[var(--color-Medium)] flex flex-col px-7 py-5 gap-5 text-3xl font-outfit w-fit mt-5">Voir toutes les versions</button>
+          <cardGameDownload v-for="link in gameDownLoadLinkActuelle" :key="link.url" :download-link="link"/>
+          <h2 v-if="gameDownLoadLinkAnterieur?.length" class="text-3xl font-outfit">Version antérieures</h2>
+          <cardGameDownload v-for="link in gameDownLoadLinkAnterieur" :key="link.url" :download-link="link"/>
+          <button v-if="gameDownLoadLinkAnterieur?.length" class="bg-[var(--color-Medium)] flex flex-col px-7 py-5 gap-5 text-3xl font-outfit w-fit mt-5">Voir toutes les versions</button>
         </section>
         <section class="col-start-8 col-span-4 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-2.5">
           <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">

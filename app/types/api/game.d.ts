@@ -72,7 +72,15 @@ export type GameConclusion = {
   retenu?: block[]
 }
 
-export type GameState = 'cancelled' | 'on-hold' | 'in-progress' | 'completed'
+export type GameDownloadLink = {
+  versionName: string
+  versionNumber: string
+  versionActuelle: boolean
+  operatingSystem: 'windows' | 'macos' | 'linux'
+  url: string
+}
+
+export type GameState = 'cancelled' | 'on-hold' | 'in-progress' | 'completed' | 'finished'
 
 export type Game = {
   _id: string
@@ -87,4 +95,5 @@ export type Game = {
   inspirations?: GameInspiration[]
   ajouts?: GameAjouts
   conclusion?: GameConclusion
+  downloadLink?: GameDownloadLink[]
 }
