@@ -19,26 +19,54 @@ export const bookType = defineType({
         initialValue: 'Placeholder Title',
         },
         {
-        name: 'cover',
-        title: 'Cover',
-        type: 'array',
-        of: [
-            {
-            type: 'image',
-            options: {
-                hotspot: true,
-            },
-            fields: [
+        name: 'tinyTitle',
+        title: 'Tiny Title',
+        type: 'string',
+        initialValue: 'Placeholder Title',
+        },
+        {
+            name: 'cover',
+            title: 'Cover',
+            type: 'array',
+            of: [
                 {
-                name: 'alt',
-                title: 'Texte alternatif',
-                type: 'string',
-                validation: (rule) => rule.required(),
+                type: 'image',
+                options: {
+                    hotspot: true,
+                },
+                fields: [
+                    {
+                    name: 'alt',
+                    title: 'Texte alternatif',
+                    type: 'string',
+                    validation: (rule) => rule.required(),
+                    },
+                ],
                 },
             ],
-            },
-        ],
-        validation: (rule) => rule.required(),
+            validation: (rule) => rule.required(),
+        },
+        {
+            name: 'heroImage',
+            title: 'Hero',
+            type: 'array',
+            of: [
+                {
+                type: 'image',
+                options: {
+                    hotspot: true,
+                },
+                fields: [
+                    {
+                    name: 'alt',
+                    title: 'Texte alternatif',
+                    type: 'string',
+                    validation: (rule) => rule.required(),
+                    },
+                ],
+                },
+            ],
+            validation: (rule) => rule.required(),
         },
         {
             name: 'etiquettes',
@@ -86,6 +114,13 @@ export const bookType = defineType({
             name: 'description',
             type: 'array',
             of: [{ type: 'block' }],
+        },
+        {
+        name: 'proportion',
+        title: 'Proportion',
+        type: 'number',
+        initialValue: 6,
+        validation: (rule) => rule.required().min(4).max(8),
         },
     ],
 })

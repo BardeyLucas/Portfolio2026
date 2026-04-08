@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { GamePatchNote } from '~/types/api/game';
 
-
-    const props = defineProps<{
-        patchNote: GamePatchNote
-    }>()
+const props = defineProps<{
+    patchNote: GamePatchNote
+}>()
 </script>
 
 <template>

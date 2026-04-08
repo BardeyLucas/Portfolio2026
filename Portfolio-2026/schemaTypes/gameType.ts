@@ -25,6 +25,12 @@ export const gameType = defineType({
       initialValue: 'Placeholder Title',
     },
     {
+      name: 'tinyTitle',
+      title: 'Tiny Title',
+      type: 'string',
+      initialValue: 'Placeholder Title',
+    },
+    {
       name: 'cover',
       title: 'Cover',
       type: 'array',
@@ -43,6 +49,28 @@ export const gameType = defineType({
             },
           ],
         },
+      ],
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'heroImage',
+      title: 'Hero',
+      type: 'array',
+      of: [
+          {
+          type: 'image',
+          options: {
+              hotspot: true,
+          },
+          fields: [
+              {
+              name: 'alt',
+              title: 'Texte alternatif',
+              type: 'string',
+              validation: (rule) => rule.required(),
+              },
+          ],
+          },
       ],
       validation: (rule) => rule.required(),
     },

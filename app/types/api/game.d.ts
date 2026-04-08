@@ -7,6 +7,15 @@ export type GameCover = {
   alt: string
 }
 
+export type GameHeroCover = {
+  _type: 'image'
+  asset: {
+    _id: string
+    url?: string
+  }
+  alt: string
+}
+
 export type GameEtiquette = {
   label: string
   affichage: boolean
@@ -140,8 +149,10 @@ export type Game = {
   priority: number
   hero: boolean
   title: string
+  tinyTitle: string
   state: GameState
   cover: GameCover[]
+  heroImage?: GameHeroCover[]
   etiquettes: GameEtiquette[]
   mecanique?: GameMecanique[]
   mapping?: GameMap[]
