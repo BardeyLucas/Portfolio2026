@@ -56,7 +56,7 @@ const { data: books } = useAsyncData('books', () => client.fetch(bookQuery))
         <section class="inset-shadow-[0_8px_8px_rgba(255,255,255,0.20)] pb-20 -mb-8">
             <div class="w-fit mx-auto flex flex-col items-center py-12 gap-1">
                 <h2 class="text-center text-7xl">Projets</h2>
-                <div class="w-[calc(100%+10px)] h-1 bg-[var(--color-White)] my-4 opacity-80"/>
+                <!-- <div class="w-[calc(100%+10px)] h-1 bg-[var(--color-White)] my-4 opacity-80"/> -->
             </div>
             <article class="grille items-stretch gap-y-10">
                 <CardProjet v-for="projet in projets" :key="projet._id" :projet="projet" />
@@ -66,7 +66,7 @@ const { data: books } = useAsyncData('books', () => client.fetch(bookQuery))
             <div class="col-span-12">
                 <div class="w-fit mx-auto flex flex-col items-center py-12 gap-1">
                     <h2 class="text-center text-7xl">Book</h2>
-                    <div class="w-[calc(100%+10px)] h-1 bg-[var(--color-White)] my-4 opacity-80"/>
+                    <!-- <div class="w-[calc(100%+10px)] h-1 bg-[var(--color-White)] my-4 opacity-80"/> -->
                 </div>
             </div>
             <article class="col-start-2 col-span-10 grid grid-cols-3 gap-x-12 gap-y-10">

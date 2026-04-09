@@ -2,13 +2,12 @@
 import { useSanityClient } from '~/composables/sanity'
 import { useRoute } from 'vue-router'
 import { useSectionScript } from '~/composables/sectionScript'
-import { defineAsyncComponent, computed } from 'vue'
+import { defineAsyncComponent, computed, type Slots } from 'vue'
 import { PortableText } from '@portabletext/vue'
 
 const { urlFor } = useSanityImage()
 
 const route = useRoute()
-
 const client = useSanityClient()
 
 const gamesQuery = groq`
@@ -162,6 +161,18 @@ const formatDate = (dateString?: string) => {
   }).format(date)
 }
 
+const portableTextComponents = {
+  marks: {
+    // Tes 3 couleurs définies dans Sanity
+    redText: (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'text-red-500 font-bold' }, slots.default?.()),
+    blueText: (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'text-blue-500 font-bold' }, slots.default?.()),
+    greenText: (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'text-green-500 font-bold' }, slots.default?.()),
+    'opacity 75%': (_: unknown, { slots }: { slots: Slots }) => h('span', { class: 'opacity-75' }, slots.default?.()),
+    // Tu peux aussi surcharger les balises par défaut si besoin
+    strong: (_: unknown, { slots }: { slots: Slots }) => h('strong', { class: 'font-extra-bold' }, slots.default?.()),
+  },
+}
+
 </script>
 <template>
   <main class="w-full">
@@ -227,7 +238,7 @@ const formatDate = (dateString?: string) => {
           <div class="col-span-7 flex flex-col justify-center gap-10">
             <h2 class="text-3xl font-outfit">A propos de ce jeu</h2>
             <div class="flex flex-col gap-4 text-lg">
-              <PortableText :value="game?.About?.texte"/>
+              <PortableText :value="game?.About?.texte" :components="portableTextComponents"/>
             </div>
           </div>
           <div class="col-span-5 h-full bg-[var(--color-Medium)]">

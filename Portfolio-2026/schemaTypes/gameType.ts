@@ -294,6 +294,10 @@ export const gameType = defineType({
                     title: 'Texte vert',
                     value: 'greenText',
                   },
+                  {
+                    title: 'opacity75',
+                    value: 'opacity 75%',
+                  },
                 ],
               },
             },
