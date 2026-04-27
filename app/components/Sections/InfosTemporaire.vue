@@ -31,23 +31,23 @@ const gameMecaniqueRight = computed(() => {
 
 <template>
     <section class="stack-section" :style="{ '--z': zIndex, 'background-color': `var(${color1})` }">
-        <article class="stack-panel px-12 pt-36 pb-12 flex flex-col relative h-auto">
-            <h2 class="text-5xl mb-12">{{ sectionTitle }}</h2>
-            <section class="w-full flex-1 flex rounded-3xl p-10 flex flex-col gap-10" :style="{ 'background-color': `var(${color2})` }">
+        <article class="stack-panel px-5 lg:px-12 pt-36 pb-12 flex flex-col relative h-auto">
+            <h2 class="text-2xl lg:text-5xl mb-12">{{ sectionTitle }}</h2>
+            <section class="w-full flex-1 flex rounded-3xl p-5 lg:p-10 flex flex-col gap-5 lg:gap-10" :style="{ 'background-color': `var(${color2})` }">
                 <div class=" flex flex-col gap-2">
-                    <h3 class="text-4xl mb-2">{{ sousSectionTitle }}</h3>
-                    <p v-if="line1" class="text-lg">
+                    <h3 class="text-xl lg:text-4xl mb-2">{{ sousSectionTitle }}</h3>
+                    <p v-if="line1" class="text-xs lg:text-lg">
                         {{ line1 }}
                         <span v-if="line2"><br>
                         {{ line2 }}
                         </span>
                     </p>
                 </div>
-                <section class="w-full h-full flex gap-12">
-                    <section class="h-full flex-1 flex flex-col gap-10">
+                <section class="w-full h-full flex flex-col lg-flex-row gap-12">
+                    <section class="h-full flex-1 flex flex-col gap-5 lg:gap-10">
                         <CardTemporaireMecanique v-for="mecaniqueLeft in gameMecaniqueLeft" :key="mecaniqueLeft.titre" :mecanique="mecaniqueLeft" :color="color3" :center="mecaniqueLeft.center"/>
                     </section>
-                    <section class="h-full flex-1 flex flex-col gap-10">
+                    <section class="h-full flex-1 flex flex-col gap-5 lg:gap-10">
                         <CardTemporaireMecanique v-for="mecaniqueRight in gameMecaniqueRight" :key="mecaniqueRight.titre" :mecanique="mecaniqueRight" :color="color3" :center="mecaniqueRight.center"/>
                     </section>
                 </section>

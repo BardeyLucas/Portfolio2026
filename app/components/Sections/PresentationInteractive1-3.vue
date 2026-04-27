@@ -38,7 +38,7 @@ const portableTextComponents = {
                             <h4 class="text-5xl font-bold">{{ map.titre }}</h4>
                             <PortableText :value="map.texte" :components="portableTextComponents" />
                         </section>
-                        <section class="h-full py-5 relative flex gap-5 justify-end shrink-0">
+                        <section class="h-full relative flex gap-5 justify-end shrink-0">
                             <div class="h-full aspect-[210/297] bg-[var(--color-Medium)] shrink-0">
                                 <img v-if="props.game.mapping?.[activeMapId]?.images" class="w-full h-full object-cover" :src="urlFor(props.game.mapping![activeMapId]!.images!)?.url()">
                             </div>

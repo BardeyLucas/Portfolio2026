@@ -27,7 +27,8 @@ const list = computed(() => (props.game[props.subject] as ListItem[]) || [])
 
 const portableTextComponents = {
   block: {
-    normal: (_: unknown, { slots }: { slots: Slots }) => h('p', { class: 'text-2xl' }, slots.default?.()),
+    h3: (_: unknown, { slots }: { slots: Slots }) => h('h3', { class: 'text-2xl font-outfit mt-6' }, slots.default?.()),
+    normal: (_: unknown, { slots }: { slots: Slots }) => h('p', { class: 'text-lg' }, slots.default?.()),
   },        
 }
 </script>
@@ -52,8 +53,8 @@ const portableTextComponents = {
                 <div class="flex-1 h-full bg-[#000000]"><SectionElements :section-number="sectionNumber" :subject="subject" :game="game" @select="selector = $event"/></div>
                 <div class="flex-1 h-full relative bg-[#000000]">
                     <img v-if="list[selector]?.image?.asset?.url" class="w-full h-full object-cover object-center absolute top-0 left-0 transition-all duration-300 opacity-30" :src="list[selector]?.image?.asset?.url" :alt="list[selector]?.image?.alt">
-                    <div class="w-full h-full absolute top-0 left-0 px-12 py-20 flex flex-col gap-12">
-                        <h3 class="text-5xl font-outfit">{{ list[selector]?.titre }}</h3>
+                    <div class="w-full h-full absolute top-0 left-0 px-12 py-20 flex flex-col gap-3">
+                        <h3 class="text-5xl font-outfit mb-12">{{ list[selector]?.titre }}</h3>
                         <PortableText :value="list[selector]?.description || []" :components="portableTextComponents" />
                     </div>
                 </div>
