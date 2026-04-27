@@ -190,7 +190,7 @@ const portableTextComponents = {
           </div>
         </div>
       </article>
-      <article class="grille pt-12 pb-24">
+      <article class="flex flex-col lg:grid lg:grille pt-12 pb-24">
         <section class="col-start-2 col-span-6 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-5">
           <div class="bg-[var(--color-Medium)] flex flex-col px-7 py-5 gap-5">
             <h2 v-if="game?.state === 'finished'" class="text-2xl font-outfit">Jeu terminé</h2>
