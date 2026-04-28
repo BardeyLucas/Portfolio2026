@@ -183,10 +183,10 @@ const portableTextComponents = {
           :alt="game?.heroImage?.[0]?.alt || game?.title || 'Image du jeu'"
           :src="getCoverUrl(game?.heroImage)"
           >
-        <div class="absolute bottom-0 left-0 w-full h-40 flex flex-col gap-4 items-start justify-center px-12 bg-gradient-to-t from-[var(--color-Darker)] via-[#0D0D0D66] via-80% to-transparent font-outfit">
-          <h1 class="text-6xl">{{ game?.title }}</h1>
-          <div class="flex gap-2.5 text-xl">
-            <p v-for="etiquette in game?.etiquettes" :key="etiquette.label" class="bg-[#008800] text-[var(--color-White)] px-4 py-1 rounded-full">{{ etiquette.label }}</p>   
+        <div class="absolute bottom-0 left-0 w-full h-24 lg:h-40 flex flex-col gap-2 lg:gap-4 items-start justify-center p-5 lg:px-12 bg-gradient-to-t from-[var(--color-Darker)] via-[#0D0D0D66] via-80% to-transparent font-outfit">
+          <h1 class="text-2xl lg:text-6xl">{{ game?.title }}</h1>
+          <div class="flex gap-2.5 text-xs text-nowrap lg:text-xl">
+            <p v-for="etiquette in game?.etiquettes" :key="etiquette.label" class="bg-[#008800] text-[var(--color-White)] px-2 lg:px-4 py-1 rounded-full">{{ etiquette.label }}</p>   
           </div>
         </div>
       </article>
