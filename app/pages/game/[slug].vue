@@ -190,45 +190,45 @@ const portableTextComponents = {
           </div>
         </div>
       </article>
-      <article class="flex flex-col lg:grid lg:grille pt-12 pb-24">
-        <section class="col-start-2 col-span-6 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-5">
-          <div class="bg-[var(--color-Medium)] flex flex-col px-7 py-5 gap-5">
-            <h2 v-if="game?.state === 'finished'" class="text-2xl font-outfit">Jeu terminé</h2>
-            <p v-if="game?.state === 'finished'"><span class="font-bold">Remarque :</span> Le jeu est terminé et il n'est pas prévu qu'il reçoive de nouvelles mises à jour à l'avenir.</p>
-            <h2 v-if="game?.state === 'completed'" class="text-2xl font-outfit">Jeu complété</h2>
-            <p v-if="game?.state === 'completed'"><span class="font-bold">Remarque :</span> Le jeu est actuellement complet mais il n'est pas exclus qu'il reçoive de nouvelles mises à jour à l'avenir.</p>
-            <h2 v-if="game?.state === 'on-hold' || game?.state === 'in-progress'" class="text-2xl font-outfit">Jeu en accès anticipé</h2>
-            <p v-if="game?.state === 'on-hold' || game?.state === 'in-progress'"><span class="font-bold">Remarque :</span> Les jeux en accès anticipé ne sont pas terminés, ils peuvent changer de façon significative. Si ce jeu ne vous intéresse pas dans son état actuel, vous devriez attendre pour voir s'il se développe davantage.</p>
-            <h2 v-if="game?.state === 'cancelled'" class="text-2xl font-outfit">Jeu annulé</h2>
-            <p v-if="game?.state === 'cancelled'"><span class="font-bold">Remarque :</span> Le jeu est annulé, mais il est toujours possible qu'il reçoive des patchs ultérieurement.</p>
+      <article class="flex flex-col lg:grid lg:grille pt-12 lg:pb-24">
+        <section class="col-start-2 col-span-6 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-2.5 lg:gap-5">
+          <div class="bg-[var(--color-Medium)] flex flex-col px-5 lg:px-7 py-5 gap-2.5 lg:gap-5">
+            <h2 v-if="game?.state === 'finished'" class="text-xl lg:text-2xl font-outfit">Jeu terminé</h2>
+            <p v-if="game?.state === 'finished'" class="text-sm lg:text-base"><span class="font-bold">Remarque :</span> Le jeu est terminé et il n'est pas prévu qu'il reçoive de nouvelles mises à jour à l'avenir.</p>
+            <h2 v-if="game?.state === 'completed'" class="text-xl lg:text-2xl font-outfit">Jeu complété</h2>
+            <p v-if="game?.state === 'completed'" class="text-sm lg:text-base"><span class="font-bold">Remarque :</span> Le jeu est actuellement complet mais il n'est pas exclus qu'il reçoive de nouvelles mises à jour à l'avenir.</p>
+            <h2 v-if="game?.state === 'on-hold' || game?.state === 'in-progress'" class="text-xl lg:text-2xl font-outfit">Jeu en accès anticipé</h2>
+            <p v-if="game?.state === 'on-hold' || game?.state === 'in-progress'" class="text-sm lg:text-base"><span class="font-bold">Remarque :</span> Les jeux en accès anticipé ne sont pas terminés, ils peuvent changer de façon significative. Si ce jeu ne vous intéresse pas dans son état actuel, vous devriez attendre pour voir s'il se développe davantage.</p>
+            <h2 v-if="game?.state === 'cancelled'" class="text-xl lg:text-2xl font-outfit">Jeu annulé</h2>
+            <p v-if="game?.state === 'cancelled'" class="text-sm lg:text-base"><span class="font-bold">Remarque :</span> Le jeu est annulé, mais il est toujours possible qu'il reçoive des patchs ultérieurement.</p>
           </div>
-          <h2 class="text-3xl font-outfit">Version actuelle</h2>
+          <h2 class="text-xl lg:text-3xl font-outfit">Version actuelle</h2>
           <cardGameDownload v-for="link in gameDownLoadLinkActuelle" :key="link.url" :download-link="link"/>
           <h2 v-if="gameDownLoadLinkAnterieur?.length" class="text-3xl font-outfit">Version antérieures</h2>
           <cardGameDownload v-for="link in gameDownLoadLinkAnterieur" :key="link.url" :download-link="link"/>
           <button v-if="gameDownLoadLinkAnterieur?.length" class="bg-[var(--color-Medium)] flex flex-col px-7 py-5 gap-5 text-3xl font-outfit w-fit mt-5">Voir toutes les versions</button>
         </section>
         <section class="col-start-8 col-span-4 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-2.5">
-          <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <IconesGamePlayer class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">{{ game?.details?.playerNumber === 'solo' ? 'Solo' : 'Multijoueur' }}</p>
+          <div class="bg-[var(--color-Medium)] flex items-center px-4 lg:px-5 py-2.5 lg:py-4 gap-4 lg:gap-5">
+            <IconesGamePlayer class="w-5 lg:w-10 h-5 lg:h-10"/>
+            <p class="font-outfit text-base lg:text-2xl">{{ game?.details?.playerNumber === 'solo' ? 'Solo' : 'Multijoueur' }}</p>
           </div>
-          <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <IconesGameLanguage class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">{{ game?.details?.langue?.map((l: string) => l === 'fr' ? 'Français' : l === 'en' ? 'Anglais' : l).join(' / ') }}</p>
+          <div class="bg-[var(--color-Medium)] flex items-center px-4 lg:px-5 py-2.5 lg:py-4 gap-4 lg:gap-5">
+            <IconesGameLanguage class="w-5 lg:w-10 h-5 lg:h-10"/>
+            <p class="font-outfit text-base lg:text-2xl">{{ game?.details?.langue?.map((l: string) => l === 'fr' ? 'Français' : l === 'en' ? 'Anglais' : l).join(' / ') }}</p>
           </div>
-          <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <IconesGameManette class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">{{ game?.details?.genre?.map((g: string) => g === 'action-platformer' ? 'Action Platformer' : g === 'narrative-adventure' ? 'Narrative Adventure' : g === 'rpg' ? 'RPG' : g === 'simulation' ? 'Simulation' : g === 'strategy' ? 'Strategy' : g === 'platformer' ? 'Platformer' : g === 'puzzle' ? 'Puzzle' : g === 'collectathon' ? 'Collectathon' : g === 'other' ? 'Autre' : g).join(' / ') }}</p>
+          <div class="bg-[var(--color-Medium)] flex items-center px-4 lg:px-5 py-2.5 lg:py-4 gap-4 lg:gap-5">
+            <IconesGameManette class="w-5 lg:w-10 h-5 lg:h-10"/>
+            <p class="font-outfit text-base lg:text-2xl">{{ game?.details?.genre?.map((g: string) => g === 'action-platformer' ? 'Action Platformer' : g === 'narrative-adventure' ? 'Narrative Adventure' : g === 'rpg' ? 'RPG' : g === 'simulation' ? 'Simulation' : g === 'strategy' ? 'Strategy' : g === 'platformer' ? 'Platformer' : g === 'puzzle' ? 'Puzzle' : g === 'collectathon' ? 'Collectathon' : g === 'other' ? 'Autre' : g).join(' / ') }}</p>
           </div>
-          <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <IconesGameInfo class="w-10 h-10"/>
-            <p class="font-outfit text-2xl">Date de sortie de<br>la dernière mise à jour : {{ formatDate(game?.details?.dateDeSortieLastUpdate) }}</p>
+          <div class="bg-[var(--color-Medium)] flex items-center px-4 lg:px-5 py-2.5 lg:py-4 gap-4 lg:gap-5">
+            <IconesGameInfo class="w-5 lg:w-10 h-5 lg:h-10"/>
+            <p class="font-outfit text-base lg:text-2xl">Date de sortie de<br>la dernière mise à jour : {{ formatDate(game?.details?.dateDeSortieLastUpdate) }}</p>
           </div>
-          <div class="bg-[var(--color-Medium)] flex items-center px-5 py-4 gap-5">
-            <IconesGameInfo class="w-10 h-10"/>
-            <p v-if="game?.details?.dateDeSortie?.type === 'release'" class="font-outfit text-2xl">Date de sortie de<br>la version Beta : <span v-if="game?.details?.dateDeSortie?.date">{{ formatDate(game?.details?.dateDeSortie?.date) }}</span><span v-else>Bientôt annoncée</span></p>
-            <p v-if="game?.details?.dateDeSortie?.type === 'beta'" class="font-outfit text-2xl">Date de sortie de<br>du jeu : <span v-if="game?.details?.dateDeSortie?.date">{{ formatDate(game?.details?.dateDeSortie?.date) }}</span><span v-else>Bientôt annoncée</span></p>
+          <div class="bg-[var(--color-Medium)] flex items-center px-4 lg:px-5 py-2.5 lg:py-4 gap-4 lg:gap-5">
+            <IconesGameInfo class="w-5 lg:w-10 h-5 lg:h-10"/>
+            <p v-if="game?.details?.dateDeSortie?.type === 'release'" class="font-outfit text-base lg:text-2xl">Date de sortie de<br>la version Beta : <span v-if="game?.details?.dateDeSortie?.date">{{ formatDate(game?.details?.dateDeSortie?.date) }}</span><span v-else>Bientôt annoncée</span></p>
+            <p v-if="game?.details?.dateDeSortie?.type === 'beta'" class="font-outfit text-base lg:text-2xl">Date de sortie de<br>du jeu : <span v-if="game?.details?.dateDeSortie?.date">{{ formatDate(game?.details?.dateDeSortie?.date) }}</span><span v-else>Bientôt annoncée</span></p>
           </div>
         </section>
       </article>
