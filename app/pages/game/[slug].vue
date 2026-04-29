@@ -190,7 +190,7 @@ const portableTextComponents = {
           </div>
         </div>
       </article>
-      <article class="flex flex-col lg:grid lg:grille pt-12 lg:pb-24">
+      <article class="flex flex-col lg:grid lg:grille pt-6 lg:pt-12 lg:pb-24">
         <section class="col-start-2 col-span-6 bg-[var(--color-Dark)] h-fit flex flex-col p-5 gap-2.5 lg:gap-5">
           <div class="bg-[var(--color-Medium)] flex flex-col px-5 lg:px-7 py-5 gap-2.5 lg:gap-5">
             <h2 v-if="game?.state === 'finished'" class="text-xl lg:text-2xl font-outfit">Jeu terminé</h2>
@@ -235,28 +235,31 @@ const portableTextComponents = {
     </section>
     <section class="bg-[var(--color-Dark)] stack-section" style="--z: 2">
         <article class="stack-panel grille pt-36 pb-12">
-          <div class="col-span-7 flex flex-col justify-center gap-10">
-            <h2 class="text-3xl font-outfit">A propos de ce jeu</h2>
-            <div class="flex flex-col gap-4 text-lg">
+          <div class="block lg:hidden aspect-square col-span-12 h-full bg-[var(--color-Medium)]">
+            <img v-if="game?.About?.images?.[0]" class="w-full h-full object-cover" :src="urlFor(game?.About?.images?.[0])?.url()" :alt="game?.About?.images?.[0]?.alt">
+          </div>
+          <div class="col-span-12 lg:col-span-7 flex flex-col justify-center gap-5 lg:gap-10 mt-6 lg:mt-0">
+            <h2 class="text-xl lg:text-3xl font-outfit">A propos de ce jeu</h2>
+            <div class="flex flex-col gap-4 text-sm lg:text-lg">
               <PortableText :value="game?.About?.texte" :components="portableTextComponents"/>
             </div>
           </div>
-          <div class="col-span-5 h-full bg-[var(--color-Medium)]">
+          <div class="hidden lg:block col-span-5 h-full bg-[var(--color-Medium)]">
             <img v-if="game?.About?.images?.[0]" class="w-full h-full object-cover" :src="urlFor(game?.About?.images?.[0])?.url()" :alt="game?.About?.images?.[0]?.alt">
           </div>
         </article>
     </section>
     <section class="bg-[var(--color-Medium)] stack-section" style="--z: 3">
-        <article class="stack-panel grille pb-12 pt-36 h-screen">
-          <section class="col-span-6 bg-[var(--color-Dark)] flex flex-col p-12 gap-10 rounded-t-2xl h-full overflow-y-auto" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);">
-            <h2 class="text-3xl font-outfit">Actualités</h2>
+        <article class="stack-panel lg:grille lg:pb-12 lg:pt-36 lg:h-screen">
+          <section class="lg:col-span-6 bg-[var(--color-Dark)] grille gap-y-5 auto-rows-min lg:flex lg:flex-col lg:p-12 lg:gap-10 lg:rounded-t-2xl h-screen lg:h-full overflow-y-auto py-5 lg:py-0" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);">
+            <h2 class="text-3xl font-outfit overflow-x col-span-10">Actualités</h2>
             <CardActualites v-for="actualite in game?.actualite" :key="actualite._id" :actualite="actualite"/>
-            <p v-if="!game?.actualite?.length" class="text-2xl opacity-80">Aucune actualité pour le moment.</p>
+            <p v-if="!game?.actualite?.length" class="col-span-10 text-2xl opacity-80">Aucune actualité pour le moment.</p>
           </section>
-          <section class="col-span-6 bg-[var(--color-Dark)] flex flex-col p-12 gap-10 rounded-t-2xl h-full overflow-y-auto" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);">
-            <h2 class="text-3xl font-outfit overflow-x">Patch notes</h2>
+          <section class="lg:col-span-6 bg-[var(--color-Dark)] grille gap-y-5 auto-rows-min lg:flex lg:flex-col lg:p-12 lg:gap-10 lg:rounded-t-2xl h-screen lg:h-full overflow-y-auto py-5 lg:py-0" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);">
+            <h2 class="text-3xl font-outfit overflow-x col-span-10">Patch notes</h2>
             <CardPatchNotes v-for="patchNote in game?.patchNote" :key="patchNote._id" :patch-note="patchNote"/>
-            <p v-if="!game?.patchNote?.length" class="text-2xl opacity-80">Aucun patch note pour le moment.</p>
+            <p v-if="!game?.patchNote?.length" class="col-span-10 text-2xl opacity-80">Aucun patch note pour le moment.</p>
           </section>
         </article>
     </section>
